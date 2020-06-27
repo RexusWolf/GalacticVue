@@ -1,23 +1,56 @@
 <template>
-  <v-card hover class="mx-auto" max-width="344">
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      src="https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg"
-    ></v-img>
-    <v-card-title id="cardTitle" class="starJediFont glow">ANAKIN SKYWALKER</v-card-title>
-    <v-card-subtitle class="white--text">JEDI KNIGHT</v-card-subtitle>
-    <v-card-text
-      class="gvgray--text"
-    >Anakin Skywalker, a Force-sensitive human male, was a Jedi Knight of the Galactic Republic and the Chosen One of the Force.</v-card-text>
+  <v-card hover class="mx-auto" max-width="344" :style="cssProps">
+    <v-img id="cardImg" :src="this.cardImageUrl"></v-img>
+    <div class="cardFooter">
+      <v-card-title id="cardTitle" class="starJediFont textGlow">{{this.cardTitle}}</v-card-title>
+      <v-card-subtitle class="white--text">{{this.cardSubtitle}}</v-card-subtitle>
+      <v-card-text class="cardText gvgray--text">{{this.cardText}}</v-card-text>
+      <v-card-actions>
+        <v-btn text class="cardButton">READ MORE</v-btn>
+      </v-card-actions>
+    </div>
   </v-card>
 </template>
 
 <script>
 export default {
-  name: "GalactivVCard",
-
-  data: () => ({})
+  name: "GalacticVCard",
+  props: {
+    cardImageUrl: {
+      type: String,
+      required: true,
+      default: "https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg"
+    },
+    cardTitle: {
+      type: String,
+      required: true,
+      default: "Anakin Skywalker"
+    },
+    cardSubtitle: {
+      type: String,
+      required: true,
+      default: "JEDI KNIGHT"
+    },
+    cardText: {
+      type: String,
+      required: true,
+      default:
+        "Anakin Skywalker, a Force-sensitive human male, was a Jedi Knight of the Galactic Republic and the Chosen One of the Force."
+    },
+    forceColor: {
+      type: String,
+      required: true,
+      default: "deepskyblue"
+    }
+  },
+  data: () => ({}),
+  computed: {
+    cssProps() {
+      return {
+        "--forceColor": this.forceColor
+      };
+    }
+  }
 };
 </script>
 <style scoped>
@@ -27,17 +60,64 @@ export default {
   font-family: GalaxyVue !important;
 }
 
-.v-card:hover > #cardTitle {
+.v-card:hover > .cardFooter > #cardTitle {
   color: #ffffff;
   text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: textGlow 1s ease-in-out infinite alternate;
+  -moz-animation: textGlow 1s ease-in-out infinite alternate;
+  animation: textGlow 1s ease-in-out infinite alternate;
 }
 
-@-webkit-keyframes glow {
+@-webkit-keyframes textGlow {
   to {
     text-shadow: 0 0 2px #ffffff, 0 0 2px #ffffff, 0 0 2px #ffffff;
   }
+}
+
+.v-card {
+  position: relative;
+  background-color: #ffffff;
+  height: 400px;
+  width: 340px;
+  overflow: hidden;
+  border-radius: 15px !important;
+  -webkit-transition: box-shadow 0.2s linear;
+  -moz-transition: box-shadow 0.2s linear;
+  -ms-transition: box-shadow 0.2s linear;
+  -o-transition: box-shadow 0.2s linear;
+  transition: box-shadow 0.2s linear;
+}
+
+.v-card:hover {
+  box-shadow: 0 0 15px var(--forceColor) !important;
+}
+
+.v-card > #cardImg {
+  /* center horizontally overflown image */
+  height: 45%;
+}
+
+.cardFooter {
+  height: 55%;
+  position: absolute;
+  bottom: 0;
+}
+
+.cardText {
+  height: 30%;
+  overflow: hidden;
+}
+
+.cardButton {
+  color: var(--forceColor) !important;
+}
+
+.v-card > #cardImg {
+  /* the other rules */
+  transition: height 0.3s, opacity 0.3s;
+}
+.v-card:hover > #cardImg {
+  height: 400px;
+  opacity: 0.3;
 }
 </style>
