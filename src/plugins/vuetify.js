@@ -9,6 +9,8 @@ export default new Vuetify({
         themes: {
             dark: {
                 gvyellow: '#ffe81F',
+                gvgray: '#aaa',
+                gvred: '#9e4f60',
             }
         },
         options: {
