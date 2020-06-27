@@ -76,7 +76,6 @@ export default {
 
 .v-card {
   position: relative;
-  background-color: #ffffff;
   height: 400px;
   width: 340px;
   overflow: hidden;
@@ -90,11 +89,6 @@ export default {
 
 .v-card:hover {
   box-shadow: 0 0 15px var(--forceColor) !important;
-}
-
-.v-card > #cardImg {
-  /* center horizontally overflown image */
-  height: 45%;
 }
 
 .cardFooter {
@@ -113,7 +107,7 @@ export default {
 }
 
 .v-card > #cardImg {
-  /* the other rules */
+  height: 45%;
   transition: height 0.3s, opacity 0.3s;
 }
 .v-card:hover > #cardImg {
