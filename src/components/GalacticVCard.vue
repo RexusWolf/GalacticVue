@@ -2,8 +2,8 @@
   <v-card class="mx-auto galacticOutline" max-width="344" outlined>
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="overline mb-4">OVERLINE</div>
-        <v-list-item-title class="starJediFont mb-1 gvyellow--text">Headline 5</v-list-item-title>
+        <div class="overline mb-4">JEDI KNIGHT</div>
+        <v-list-item-title class="starJediFont mb-1 gvyellow--text">SKYWALKER</v-list-item-title>
         <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
       </v-list-item-content>
 
@@ -26,11 +26,15 @@ export default {
 </script>
 <style scoped>
 @import "../assets/fonts/fonts.css";
+:root {
+  --gvyellow: "#ffe81F";
+}
+
 .starJediFont {
   font-family: Starjedi !important;
 }
 
-.galacticOutline {
-  border-color: yellow !important;
+.v-card {
+  border-color: var(--v-gvyellow-base) !important;
 }
 </style>

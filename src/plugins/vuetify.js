@@ -10,6 +10,9 @@ export default new Vuetify({
             dark: {
                 gvyellow: '#ffe81F',
             }
+        },
+        options: {
+            customProperties: true,
         }
     }
 });
