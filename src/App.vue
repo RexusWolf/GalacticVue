@@ -11,7 +11,7 @@
     </v-app-bar>
 
     <v-content class="mt-5">
-      <div class="d-flex">
+      <v-row>
         <galactic-v-card></galactic-v-card>
         <galactic-v-card
           cardTitle="Darth Maul"
@@ -37,7 +37,7 @@
           forceColor="lawngreen"
           infoUrl="https://starwars.fandom.com/wiki/Luke_Skywalker"
         ></galactic-v-card>
-      </div>
+      </v-row>
     </v-content>
   </v-app>
 </template>
