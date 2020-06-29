@@ -1,7 +1,7 @@
 <template>
   <v-card
     hover
-    class="mx-auto"
+    class="mx-auto mb-5"
     max-width="290"
     :href="this.infoUrl"
     target="_blank"
