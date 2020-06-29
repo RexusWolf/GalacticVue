@@ -2,3 +2,8 @@
     font-family: "GalaxyVue";
     src: url('./SfDistantGalaxyRegular.ttf');
 }
+
+@font-face {
+    font-family: "GalaxyVueSymbol";
+    src: url('./SfDistantGalaxySymbols.ttf');
+}

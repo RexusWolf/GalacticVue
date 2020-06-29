@@ -1,0 +1,61 @@
+.starJediFont {
+    font-family: GalaxyVue !important;
+}
+
+.v-card {
+    position: relative;
+    height: 400px;
+    width: 340px;
+    overflow: hidden;
+    border-radius: 15px !important;
+    -webkit-transition: box-shadow 0.2s linear;
+    -moz-transition: box-shadow 0.2s linear;
+    -ms-transition: box-shadow 0.2s linear;
+    -o-transition: box-shadow 0.2s linear;
+    transition: box-shadow 0.2s linear;
+}
+
+.v-card:hover {
+    box-shadow: 0 0 15px var(--forceColor) !important;
+}
+
+.v-card:hover > .cardFooter > #cardTitle {
+    color: #ffffff;
+    text-align: center;
+    -webkit-animation: textGlow 1s ease-in-out infinite alternate;
+    -moz-animation: textGlow 1s ease-in-out infinite alternate;
+    animation: textGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    to {
+        text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff, 0 0 1px #ffffff;
+    }
+}
+
+.cardFooter {
+    height: 55%;
+    position: absolute;
+    bottom: 0;
+}
+
+.cardText {
+    height: 30%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardButton {
+    color: var(--forceColor) !important;
+}
+
+.v-card > #cardImg {
+    height: 45%;
+    transition: height 0.3s, opacity 0.3s;
+}
+.v-card:hover > #cardImg {
+    height: 400px;
+    opacity: 0.3;
+}
