@@ -99,6 +99,9 @@ export default {
 
 .cardText {
   height: 30%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
