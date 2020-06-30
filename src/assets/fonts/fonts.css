@@ -7,3 +7,14 @@
     font-family: "GalaxyVueSymbol";
     src: url('./SfDistantGalaxySymbols.ttf');
 }
+
+@font-face {
+    font-family: "GalaxyVueOutline";
+    src: url('./SfDistantGalaxyOutline.ttf');
+}
+
+
+@font-face {
+    font-family: "GalaxyVueNews";
+    src: url('./NewsGothicStd.otf');
+}

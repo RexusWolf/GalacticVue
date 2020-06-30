@@ -1,9 +1,9 @@
 <template>
   <v-card hover class="mx-auto mb-5 pt-4" max-width="290" :style="cssProps">
-    <v-container fluid class="starJediFont pl-8">
+    <v-container fluid class="pl-8">
       <v-row class="mb-2" v-bind:key="index" v-for="(key, index) in keys">
-        <h3 class="gvyellow--text">{{key}}:</h3>
-        <h3 class="ml-2">{{values[index]}}</h3>
+        <h3 class="gvyellow--text starJediOutlineFont">{{key}}:</h3>
+        <h3 class="ml-2 starJediNewsFont">{{values[index]}}</h3>
       </v-row>
     </v-container>
   </v-card>
