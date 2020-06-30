@@ -1,9 +1,9 @@
 <template>
   <v-card hover class="mx-auto mb-5 pt-2" max-width="290" :style="cssProps">
     <v-container fluid class="starJediFont pl-7 pb-0">
-      <v-row class="mb-2" v-bind:key="prop" v-for="prop in props">
-        <h3 class="white--text">{{prop[0].replace(/([A-Z])/g, ' $1').trim()}}:</h3>
-        <h3 class="ml-2 white--text">{{prop[1]}}</h3>
+      <v-row class="mb-2" v-bind:key="index" v-for="(key, index) in keys">
+        <h3 class="white--text">{{key}}:</h3>
+        <h3 class="ml-2 white--text">{{values[index]}}</h3>
       </v-row>
     </v-container>
     <v-card-actions class>
@@ -60,6 +60,11 @@ export default {
       type: String,
       required: true,
       default: "X-wing"
+    },
+    forceColor: {
+      type: String,
+      required: true,
+      default: "deepskyblue"
     }
   },
   data: () => ({}),
@@ -69,8 +74,16 @@ export default {
         "--forceColor": this.forceColor
       };
     },
-    props() {
-      return Object.entries(this.$props);
+    keys() {
+      let keys = Object.keys(this.$props);
+      keys.pop();
+      for (var key in keys) {
+        keys[key] = keys[key].replace(/([A-Z])/g, " $1").trim();
+      }
+      return keys;
+    },
+    values() {
+      return Object.values(this.$props);
     }
   }
 };
