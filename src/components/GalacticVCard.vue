@@ -1,12 +1,5 @@
 <template>
-  <v-card
-    hover
-    class="mx-auto mb-5"
-    max-width="290"
-    :href="this.infoUrl"
-    target="_blank"
-    :style="cssProps"
-  >
+  <v-card hover class="mx-auto mb-5" max-width="290" :style="cssProps">
     <v-img id="cardImg" :src="this.cardImageUrl"></v-img>
     <div class="cardFooter">
       <v-card-title id="cardTitle" class="starJediFont textGlow">{{this.cardTitle}}</v-card-title>
