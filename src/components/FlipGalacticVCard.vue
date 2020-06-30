@@ -3,33 +3,18 @@
     <div class="flipper">
       <div class="front" v-on:click="flipped=true">
         <slot name="front"></slot>
-        <galactic-v-card
-          cardTitle="Luke Skywalker"
-          cardSubtitle="JEDI MASTER"
-          cardImageUrl="https://dreager1.files.wordpress.com/2010/11/lukeskywalkerwallpaper-777357.jpg"
-          cardText="Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master who fought in the Galactic Civil War during the reign of the Galactic Empire.Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master who fought in the Galactic Civil War during the reign of the Galactic Empire. "
-          forceColor="lawngreen"
-          infoUrl="https://starwars.fandom.com/wiki/Luke_Skywalker"
-        ></galactic-v-card>
       </div>
       <div class="back" v-on:click="flipped=false">
         <slot name="back"></slot>
-        <galactic-v-card-back forceColor="lawngreen"></galactic-v-card-back>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import GalacticVCard from "./GalacticVCard";
-import GalacticVCardBack from "./GalacticVCardBack";
-
 export default {
   name: "FlipGalacticVCard",
-  components: {
-    GalacticVCard,
-    GalacticVCardBack
-  },
+  components: {},
   data: function() {
     return {
       flipped: false
