@@ -12,7 +12,7 @@
 
     <v-content class="mx-auto mt-5">
       <v-row>
-        <flip-galactic-v-card class="mr-5">
+        <flip-galactic-v-card class="ml-15 mr-5">
           <template slot="front">
             <galactic-v-card
               cardTitle="Darth Maul"
@@ -30,7 +30,7 @@
             ></galactic-v-card-back>
           </template>
         </flip-galactic-v-card>
-        <flip-galactic-v-card>
+        <flip-galactic-v-card class="ml-15">
           <template slot="front">
             <galactic-v-card
               cardTitle="Luke Skywalker"
@@ -49,6 +49,11 @@
           </template>
         </flip-galactic-v-card>
       </v-row>
+      <v-row class="ml-5">
+        <galactic-v-button originalTheme>ORIGINAL</galactic-v-button>
+        <galactic-v-button cloneTheme>CLONES</galactic-v-button>
+        <galactic-v-button sithTheme>SITH</galactic-v-button>
+      </v-row>
     </v-content>
   </v-app>
 </template>
@@ -57,13 +62,15 @@
 import FlipGalacticVCard from "./components/FlipGalacticVCard";
 import GalacticVCard from "./components/GalacticVCard";
 import GalacticVCardBack from "./components/GalacticVCardBack";
+import GalacticVButton from "./components/GalacticVButton";
 
 export default {
   name: "App",
   components: {
     FlipGalacticVCard,
     GalacticVCard,
-    GalacticVCardBack
+    GalacticVCardBack,
+    GalacticVButton
   },
   data: () => ({
     //

@@ -1,0 +1,48 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.originalTheme {
+  background-size: 400% 400% !important;
+  background: linear-gradient(-45deg, black, rgb(44, 40, 30));
+  animation: gradient 10s ease infinite;
+  color: #ffe81f;
+  border: 1px solid #ffe81f;
+}
+
+.originalTheme:hover {
+  background: linear-gradient(-45deg, white, whitesmoke);
+  color: black;
+  border: 1px solid transparent;
+}
+
+.cloneTheme {
+  background-size: 400% 400% !important;
+  background: linear-gradient(-45deg, steelblue, blue);
+  animation: gradient 10s ease infinite;
+  color: white;
+}
+
+.cloneTheme:hover {
+  background: linear-gradient(-45deg, lightblue, steelblue);
+}
+
+.sithTheme {
+  background-size: 400% 400% !important;
+  background: linear-gradient(-45deg, black, rgb(41, 13, 13));
+  animation: gradient 8s ease infinite;
+  color: white;
+  border: 1px solid red;
+}
+
+.sithTheme:hover {
+  background: linear-gradient(-45deg, red, rgb(99, 0, 0));
+  border: 1px solid transparent;
+}
