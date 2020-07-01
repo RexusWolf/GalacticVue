@@ -71,3 +71,14 @@
     height: 400px;
     opacity: 0.3;
 }
+
+.v-card > #cardBackImg {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.cardBackInfo {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+}
