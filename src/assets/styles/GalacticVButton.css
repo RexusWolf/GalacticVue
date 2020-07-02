@@ -13,13 +13,13 @@
   background-size: 400% 400% !important;
   background: linear-gradient(-45deg, black, rgb(44, 40, 30));
   animation: gradient 10s ease infinite;
-  color: #ffe81f;
+  color: #ffe81f !important;
   border: 1px solid #ffe81f;
 }
 
 .originalTheme:hover {
-  background: linear-gradient(-45deg, white, whitesmoke);
-  color: black;
+  background: linear-gradient(-45deg, #ffe81f, #fff06d);
+  color: black !important;
   border: 1px solid transparent;
 }
 
@@ -32,6 +32,7 @@
 
 .cloneTheme:hover {
   background: linear-gradient(-45deg, lightblue, steelblue);
+  color: black;
 }
 
 .sithTheme {
@@ -45,4 +46,18 @@
 .sithTheme:hover {
   background: linear-gradient(-45deg, red, rgb(99, 0, 0));
   border: 1px solid transparent;
+}
+
+.empireTheme {
+  background-size: 400% 400% !important;
+  background: linear-gradient(-45deg, white, whitesmoke);
+  animation: gradient 8s ease infinite;
+  color: black !important;
+  border: 1px solid black;
+}
+
+.empireTheme:hover {
+  background: linear-gradient(-45deg, black, rgb(44, 44, 44));
+  color: white !important;
+  border: 1px solid white;
 }

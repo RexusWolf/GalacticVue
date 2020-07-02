@@ -54,6 +54,7 @@
         <galactic-v-button originalTheme>ORIGINAL</galactic-v-button>
         <galactic-v-button cloneTheme>CLONES</galactic-v-button>
         <galactic-v-button sithTheme>SITH</galactic-v-button>
+        <galactic-v-button empireTheme>EMPIRE</galactic-v-button>
       </v-row>
     </v-content>
   </v-app>

@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+    v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, empireTheme: empireTheme, sithTheme: sithTheme}"
     v-bind="$attrs"
     class="starJediFont ma-1"
     :style="cssProps"
@@ -23,6 +23,10 @@ export default {
       default: false
     },
     cloneTheme: {
+      type: Boolean,
+      default: false
+    },
+    empireTheme: {
       type: Boolean,
       default: false
     },
