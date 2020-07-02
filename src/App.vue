@@ -12,7 +12,7 @@
 
     <v-content class="mx-auto mt-5">
       <v-row>
-        <galactic-v-sidebar></galactic-v-sidebar>
+        <galactic-v-sidebar originalTheme></galactic-v-sidebar>
         <flip-galactic-v-card class="ml-15 mr-5">
           <template slot="front">
             <galactic-v-card
