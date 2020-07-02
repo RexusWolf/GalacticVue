@@ -61,5 +61,5 @@ export default {
 </script>
 <style scoped>
 @import "../assets/fonts/fonts.css";
-@import "../assets/styles/GalacticVButton.css";
+@import "../assets/styles/GalacticV.css";
 </style>

@@ -17,7 +17,7 @@
   border: 1px solid #ffe81f;
 }
 
-.originalTheme:hover {
+.v-btn.originalTheme:hover {
   background: linear-gradient(-45deg, #ffe81f, #fff06d);
   color: black !important;
   border: 1px solid transparent;
@@ -30,7 +30,7 @@
   color: white;
 }
 
-.cloneTheme:hover {
+.v-btn.cloneTheme:hover {
   background: linear-gradient(-45deg, lightblue, steelblue);
   color: black;
 }
@@ -43,7 +43,7 @@
   border: 1px solid red;
 }
 
-.sithTheme:hover {
+.v-btn.sithTheme:hover {
   background: linear-gradient(-45deg, red, rgb(99, 0, 0));
   border: 1px solid transparent;
 }
@@ -56,7 +56,7 @@
   border: 1px solid black;
 }
 
-.empireTheme:hover {
+.v-btn.empireTheme:hover {
   background: linear-gradient(-45deg, black, rgb(44, 44, 44));
   color: white !important;
   border: 1px solid white;
