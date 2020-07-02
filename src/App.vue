@@ -12,6 +12,7 @@
 
     <v-content class="mx-auto mt-5">
       <v-row>
+        <galactic-v-sidebar></galactic-v-sidebar>
         <flip-galactic-v-card class="ml-15 mr-5">
           <template slot="front">
             <galactic-v-card
@@ -63,6 +64,7 @@ import FlipGalacticVCard from "./components/FlipGalacticVCard";
 import GalacticVCard from "./components/GalacticVCard";
 import GalacticVCardBack from "./components/GalacticVCardBack";
 import GalacticVButton from "./components/GalacticVButton";
+import GalacticVSidebar from "./components/GalacticVSidebar";
 
 export default {
   name: "App",
@@ -70,7 +72,8 @@ export default {
     FlipGalacticVCard,
     GalacticVCard,
     GalacticVCardBack,
-    GalacticVButton
+    GalacticVButton,
+    GalacticVSidebar
   },
   data: () => ({
     //

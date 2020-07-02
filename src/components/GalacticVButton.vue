@@ -1,6 +1,7 @@
 <template>
   <v-btn
     v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+    v-bind="$attrs"
     class="starJediFont ma-1"
     :style="cssProps"
   >
