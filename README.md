@@ -1,5 +1,5 @@
 # galactic-vue
-
+![Galactic Vue](https://media.giphy.com/media/lojdZT3Vu7E46ISj7G/giphy.gif)
 ## Project setup
 ```
 yarn install
