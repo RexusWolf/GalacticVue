@@ -1,21 +1,31 @@
 <template>
-  <v-card class="mx-auto" height="400" width="256">
-    <v-navigation-drawer
-      v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-    >
-      <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+  <v-navigation-drawer
+    v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+    v-bind="$attrs"
+    v-model="drawer"
+    :mini-variant.sync="mini"
+    permanent
+  >
+    <v-list>
+      <v-list-item>
+        <v-btn right fixed icon @click.stop="mini = !mini">
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </v-list-item>
+      <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title class="starJediFont">{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-  </v-card>
+        <v-list-item-content>
+          <v-list-item-title
+            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            class="starJediFont"
+          >{{ item.title }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
@@ -43,6 +53,8 @@ export default {
   },
   data() {
     return {
+      drawer: true,
+      mini: false,
       items: [
         { title: "Dashboard", icon: "mdi-view-dashboard" },
         { title: "Account", icon: "mdi-account-box" },

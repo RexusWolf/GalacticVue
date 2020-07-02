@@ -12,8 +12,9 @@
 
     <v-content class="mx-auto mt-5">
       <v-row>
-        <galactic-v-sidebar originalTheme></galactic-v-sidebar>
-        <flip-galactic-v-card class="ml-15 mr-5">
+        <galactic-v-sidebar class="ml-5 mr-5 mb-5" originalTheme></galactic-v-sidebar>
+        <galactic-v-sidebar class="ml-5 mr-5 mb-5" cloneTheme></galactic-v-sidebar>
+        <flip-galactic-v-card class="ml-5 mr-5">
           <template slot="front">
             <galactic-v-card
               cardTitle="Darth Maul"
@@ -31,7 +32,7 @@
             ></galactic-v-card-back>
           </template>
         </flip-galactic-v-card>
-        <flip-galactic-v-card class="ml-15">
+        <flip-galactic-v-card class="ml-5">
           <template slot="front">
             <galactic-v-card
               cardTitle="Luke Skywalker"

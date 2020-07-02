@@ -1,59 +1,19 @@
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-.originalTheme {
-  background-size: 400% 400% !important;
-  background: linear-gradient(-45deg, black, rgb(44, 40, 30));
-  animation: gradient 10s ease infinite;
-  color: #ffe81f !important;
-  border: 1px solid #ffe81f;
-}
-
 .v-btn.originalTheme:hover {
-  background: linear-gradient(-45deg, #ffe81f, #fff06d);
+  background: linear-gradient(-45deg, #ffe81f, #f8e53b);
   color: black !important;
+
   border: 1px solid transparent;
 }
 
-.cloneTheme {
-  background-size: 400% 400% !important;
-  background: linear-gradient(-45deg, steelblue, blue);
-  animation: gradient 10s ease infinite;
-  color: white;
-}
-
 .v-btn.cloneTheme:hover {
-  background: linear-gradient(-45deg, lightblue, steelblue);
+  background: linear-gradient(-45deg, rgb(245, 196, 35), rgb(255, 123, 0));
   color: black;
-}
-
-.sithTheme {
-  background-size: 400% 400% !important;
-  background: linear-gradient(-45deg, black, rgb(41, 13, 13));
-  animation: gradient 8s ease infinite;
-  color: white;
-  border: 1px solid red;
+  border: 1px solid transparent;
 }
 
 .v-btn.sithTheme:hover {
   background: linear-gradient(-45deg, red, rgb(99, 0, 0));
   border: 1px solid transparent;
-}
-
-.empireTheme {
-  background-size: 400% 400% !important;
-  background: linear-gradient(-45deg, white, whitesmoke);
-  animation: gradient 8s ease infinite;
-  color: black !important;
-  border: 1px solid black;
 }
 
 .v-btn.empireTheme:hover {
