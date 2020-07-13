@@ -1,7 +1,15 @@
+.v-btn.originalTheme {
+  color: 1px solid #ffe81f;
+}
+
 .v-btn.originalTheme:hover {
   background: linear-gradient(-45deg, #ffe81f, #f8e53b);
   color: black !important;
   border: 1px solid transparent;
+}
+
+.v-btn.cloneTheme {
+  color: 1px solid white;
 }
 
 .v-btn.cloneTheme:hover {
@@ -10,10 +18,18 @@
   border: 1px solid transparent;
 }
 
+.v-btn.sithTheme {
+  color: red;
+}
+
 .v-btn.sithTheme:hover {
   background: linear-gradient(-45deg, red, rgb(99, 0, 0));
   color: black;
   border: 1px solid transparent;
+}
+
+.v-btn.empireTheme {
+  color: 1px solid black;
 }
 
 .v-btn.empireTheme:hover {

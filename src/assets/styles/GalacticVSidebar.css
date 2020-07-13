@@ -1,0 +1,15 @@
+.v-navigation-drawer.originalTheme{
+  border-right: 1px solid #ffe81f;
+}
+
+.v-navigation-drawer.cloneTheme{
+  border-right: 1px solid white;
+}
+
+.v-navigation-drawer.sithTheme{
+  border-right: 1px solid red;
+}
+
+.v-navigation-drawer.empireTheme{
+  border-right: 1px solid black;
+}

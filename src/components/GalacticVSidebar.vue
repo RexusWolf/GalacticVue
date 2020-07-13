@@ -79,4 +79,5 @@ export default {
 <style scoped>
 @import "../assets/fonts/fonts.css";
 @import "../assets/styles/GalacticV.css";
+@import "../assets/styles/GalacticVSidebar.css";
 </style>
