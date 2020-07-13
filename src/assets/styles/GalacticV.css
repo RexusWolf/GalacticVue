@@ -46,26 +46,54 @@
   background-size: 400% 400% !important;
   background: linear-gradient(-45deg, black, rgb(44, 40, 30));
   animation: gradient 10s ease infinite;
+}
+
+.v-navigation-drawer.originalTheme{
   border-right: 1px solid #ffe81f;
+}
+
+.v-btn.originalTheme {
+  color: 1px solid #ffe81f;
 }
 
 .v-navigation-drawer.cloneTheme, .v-btn.cloneTheme  {
   background-size: 400% 400% !important;
   background: linear-gradient(-45deg, rgb(0, 26, 48), rgb(0, 39, 99));
   animation: gradient 10s ease infinite;
+}
+
+.v-navigation-drawer.cloneTheme{
   border-right: 1px solid white;
+}
+
+.v-btn.cloneTheme {
+  color: 1px solid white;
 }
 
 .v-navigation-drawer.empireTheme, .v-btn.empireTheme{
   background-size: 400% 400% !important;
   background: linear-gradient(-45deg, white, whitesmoke);
   animation: gradient 8s ease infinite;
+}
+
+.v-navigation-drawer.empireTheme{
   border-right: 1px solid black;
+}
+
+.v-btn.empireTheme {
+  color: 1px solid black;
 }
 
 .v-navigation-drawer.sithTheme, .v-btn.sithTheme{
   background-size: 400% 400% !important;
   background: linear-gradient(-45deg, black, rgb(41, 13, 13));
   animation: gradient 8s ease infinite;
+}
+
+.v-navigation-drawer.sithTheme{
   border-right: 1px solid red;
+}
+
+.v-btn.sithTheme {
+  color: red;
 }

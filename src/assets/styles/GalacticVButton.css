@@ -12,6 +12,7 @@
 
 .v-btn.sithTheme:hover {
   background: linear-gradient(-45deg, red, rgb(99, 0, 0));
+  color: black;
   border: 1px solid transparent;
 }
 

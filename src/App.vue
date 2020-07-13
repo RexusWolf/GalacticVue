@@ -41,9 +41,9 @@
         </flip-galactic-v-card>
       </v-row>
       <v-row class="ml-5">
-        <galactic-v-button originalTheme>ORIGINAL</galactic-v-button>
-        <galactic-v-button cloneTheme>CLONES</galactic-v-button>
-        <galactic-v-button sithTheme>SITH</galactic-v-button>
+        <galactic-v-button outlined originalTheme>ORIGINAL OUTLINED</galactic-v-button>
+        <galactic-v-button cloneTheme>CLONES NOT OUTLINED</galactic-v-button>
+        <galactic-v-button outlined sithTheme>SITH</galactic-v-button>
         <galactic-v-button empireTheme>EMPIRE</galactic-v-button>
       </v-row>
     </v-content>
