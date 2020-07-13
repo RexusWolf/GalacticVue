@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <galactic-v-nav-bar></galactic-v-nav-bar>
+    <galactic-v-nav-bar originalTheme></galactic-v-nav-bar>
     <v-content>
       <v-row>
         <flip-galactic-v-card class="ml-5 mr-5">

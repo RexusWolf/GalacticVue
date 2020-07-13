@@ -1,5 +1,10 @@
 <template>
   <div>
+    <galactic-v-sidebar
+      v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+      v-model="sidebar"
+      disable-resize-watcher
+    ></galactic-v-sidebar>
     <v-app-bar app>
       <span class="hidden-md-and-up">
         <v-app-bar-nav-icon @click="sidebar = !sidebar"></v-app-bar-nav-icon>
@@ -10,7 +15,7 @@
           to="https://stackoverflow.com/questions/55779555/vuetify-create-image-that-links-to-another-page"
         ></v-img>
       </router-link>
-      <v-btn
+      <galactic-v-button
         height="100%"
         text
         class="hidden-sm-and-down"
@@ -20,7 +25,7 @@
       >
         <v-icon left>{{ item.icon }}</v-icon>
         <span class="hidden-md-and-down">{{ item.title}}</span>
-      </v-btn>
+      </galactic-v-button>
       <v-spacer />
       <galactic-v-search-bar></galactic-v-search-bar>
       <v-btn to="/calendar" icon class="hidden-md-and-down primary">
@@ -60,24 +65,33 @@
 </template>
 
 <script>
+import GalacticVSidebar from "./GalacticVSidebar";
 import GalacticVSearchBar from "./GalacticVSearchBar";
+import GalacticVButton from "./GalacticVButton";
 export default {
   name: "GalacticVNavBar",
-  components: { GalacticVSearchBar },
+  components: { GalacticVSearchBar, GalacticVButton, GalacticVSidebar },
   props: {
-    loggedUser: {
-      username: {
-        type: String,
-        default: "rexus"
-      },
-      user_id: {
-        type: String,
-        default: "rexus"
-      },
-      profilePicture: {
-        type: String,
-        default: "https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg"
-      }
+    forceColor: {
+      type: String,
+      required: true,
+      default: "deepskyblue"
+    },
+    originalTheme: {
+      type: Boolean,
+      default: false
+    },
+    cloneTheme: {
+      type: Boolean,
+      default: false
+    },
+    sithTheme: {
+      type: Boolean,
+      default: false
+    },
+    username: {
+      type: String,
+      default: "rexuswolf"
     }
   },
   data() {

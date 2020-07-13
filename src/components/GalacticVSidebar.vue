@@ -2,19 +2,13 @@
   <v-navigation-drawer
     v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
     v-bind="$attrs"
-    v-model="drawer"
-    :mini-variant.sync="mini"
-    absolute
-    disable-resize-watcher
+    app
   >
     <v-list-item class="px-2">
       <v-list-item-avatar>
         <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
       </v-list-item-avatar>
       <v-list-item-title>{{this.username}}</v-list-item-title>
-      <v-btn icon @click.stop="mini = !mini">
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
     </v-list-item>
 
     <v-divider></v-divider>
@@ -65,7 +59,6 @@ export default {
   },
   data() {
     return {
-      drawer: true,
       mini: false,
       items: [
         { title: "Dashboard", icon: "mdi-view-dashboard" },
