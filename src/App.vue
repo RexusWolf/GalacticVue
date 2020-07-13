@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <galactic-v-nav-bar originalTheme></galactic-v-nav-bar>
-    <v-content>
+    <galactic-v-nav-bar sidebar originalTheme></galactic-v-nav-bar>
+    <v-content class="mx-auto pt-5">
       <v-row>
         <flip-galactic-v-card class="ml-5 mr-5">
           <template slot="front">
@@ -40,7 +40,7 @@
           </template>
         </flip-galactic-v-card>
       </v-row>
-      <v-row class="ml-5">
+      <v-row class="mx-auto">
         <galactic-v-button outlined originalTheme>ORIGINAL OUTLINED</galactic-v-button>
         <galactic-v-button cloneTheme>CLONES NOT OUTLINED</galactic-v-button>
         <galactic-v-button outlined sithTheme>SITH</galactic-v-button>

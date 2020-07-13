@@ -14,7 +14,7 @@
     <v-divider></v-divider>
 
     <v-list dense>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item v-for="item in this.sidebarItems" :key="item.title" link>
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -55,16 +55,14 @@ export default {
     username: {
       type: String,
       default: "rexuswolf"
+    },
+    sidebarItems: {
+      type: Object
     }
   },
   data() {
     return {
-      mini: false,
-      items: [
-        { title: "Dashboard", icon: "mdi-view-dashboard" },
-        { title: "Account", icon: "mdi-account-box" },
-        { title: "Admin", icon: "mdi-gavel" }
-      ]
+      mini: false
     };
   },
   computed: {

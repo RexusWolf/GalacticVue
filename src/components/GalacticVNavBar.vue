@@ -1,24 +1,29 @@
 <template>
   <div>
     <galactic-v-sidebar
+      v-if="sidebar"
       v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-      v-model="sidebar"
+      v-bind:sidebarItems="sidebarItems"
+      v-model="sidebarOpen"
       disable-resize-watcher
     ></galactic-v-sidebar>
-    <v-app-bar app>
+
+    <v-app-bar dense>
       <span class="hidden-md-and-up">
-        <v-app-bar-nav-icon @click="sidebar = !sidebar"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
-      <router-link to="/" class="hidden-md-and-down d-md-flex align-center n2w-logo">
-        <v-img
-          aria-label="Need2WatchLogo"
-          to="https://stackoverflow.com/questions/55779555/vuetify-create-image-that-links-to-another-page"
-        ></v-img>
-      </router-link>
+      <a
+        href="https://github.com/RexusWolf/GalacticVue"
+        target="_blank"
+        class="hidden-md-and-down pa-4"
+      >
+        <v-img width="60px" src="https://cdn.iconscout.com/icon/free/png-512/starwars-6-569425.png"></v-img>
+      </a>
       <galactic-v-button
+        tile
+        depressed
         height="100%"
-        text
-        class="hidden-sm-and-down"
+        class="hidden-sm-and-down ml-0 mr-0"
         v-for="item in menuItems"
         :key="item.title"
         :to="item.path"
@@ -28,12 +33,24 @@
       </galactic-v-button>
       <v-spacer />
       <galactic-v-search-bar></galactic-v-search-bar>
-      <v-btn to="/calendar" icon class="hidden-md-and-down primary">
-        <v-icon color="secondary" size="40">mdi-calendar</v-icon>
-      </v-btn>
-      <v-btn depressed to="/signIn" class="ml-3 secondary">SIGN IN</v-btn>
-      <v-btn depressed to="/signUp" class="secondary">SIGN UP</v-btn>
-      <v-card flat class="transparent d-md-flex align-center hidden-md-and-down">
+      <galactic-v-button
+        color="white"
+        tile
+        depressed
+        height="100%"
+        class="black--text ml-0 mr-0"
+        to="/signIn"
+      >SIGN IN</galactic-v-button>
+      <galactic-v-button
+        color="purple"
+        depressed
+        tile
+        height="100%"
+        class="ml-0 mr-0"
+        to="/signUp"
+      >SIGN UP</galactic-v-button>
+
+      <v-card v-if="userId" flat class="transparent d-md-flex align-center hidden-md-and-down">
         <v-list-item class="decoration-none white--text">
           <router-link to="/profile">
             <v-avatar size="50" class="nav-bar-avatar"></v-avatar>
@@ -72,6 +89,10 @@ export default {
   name: "GalacticVNavBar",
   components: { GalacticVSearchBar, GalacticVButton, GalacticVSidebar },
   props: {
+    sidebar: {
+      type: Boolean,
+      default: false
+    },
     forceColor: {
       type: String,
       required: true,
@@ -96,7 +117,7 @@ export default {
   },
   data() {
     return {
-      sidebar: false,
+      sidebarOpen: false,
       menuItems: [
         { title: "Movies", path: "/", icon: "mdi-movie" },
         {
@@ -104,7 +125,7 @@ export default {
           path: "/tvSeries",
           icon: "mdi-television-classic"
         },
-        { title: "Contact Us", path: "/contactUs", icon: "mdi-email-outline" }
+        { title: "Collection", path: "/collection", icon: "mdi-database" }
       ],
       sidebarItems: [
         {
@@ -118,7 +139,7 @@ export default {
           path: "/tvSeries",
           icon: "mdi-television-classic"
         },
-        { title: "Contact Us", path: "/contactUs", icon: "mdi-email-outline" }
+        { title: "Collection", path: "/collection", icon: "mdi-database" }
       ],
       items: [{ title: "Edit Profile", path: "/editProfile" }]
     };

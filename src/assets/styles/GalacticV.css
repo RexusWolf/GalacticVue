@@ -65,3 +65,7 @@
   background: linear-gradient(-45deg, white, whitesmoke);
   animation: gradient 8s ease infinite;
 }
+
+.v-toolbar__content{
+  padding: 0px !important;
+}
