@@ -61,9 +61,7 @@ export default {
     }
   },
   data() {
-    return {
-      mini: false
-    };
+    return {};
   },
   computed: {
     cssProps() {
