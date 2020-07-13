@@ -1,19 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app dark>
-      <h3>Galactic Vue</h3>
-      <v-spacer></v-spacer>
-
-      <v-btn href="https://github.com/RexusWolf/GalacticVue" target="_blank" text>
-        <span class="mr-2">GitHub Repository</span>
-        <v-icon>mdi-github</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content class="mx-auto mt-5">
+    <galactic-v-nav-bar></galactic-v-nav-bar>
+    <v-content>
       <v-row>
-        <galactic-v-sidebar class="ml-5 mr-5 mb-5" originalTheme></galactic-v-sidebar>
-        <galactic-v-sidebar class="ml-5 mr-5 mb-5" cloneTheme></galactic-v-sidebar>
         <flip-galactic-v-card class="ml-5 mr-5">
           <template slot="front">
             <galactic-v-card
@@ -66,7 +55,7 @@ import FlipGalacticVCard from "./components/FlipGalacticVCard";
 import GalacticVCard from "./components/GalacticVCard";
 import GalacticVCardBack from "./components/GalacticVCardBack";
 import GalacticVButton from "./components/GalacticVButton";
-import GalacticVSidebar from "./components/GalacticVSidebar";
+import GalacticVNavBar from "./components/GalacticVNavBar";
 
 export default {
   name: "App",
@@ -75,7 +64,7 @@ export default {
     GalacticVCard,
     GalacticVCardBack,
     GalacticVButton,
-    GalacticVSidebar
+    GalacticVNavBar
   },
   data: () => ({
     //

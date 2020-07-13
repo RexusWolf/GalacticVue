@@ -1,7 +1,6 @@
 .v-btn.originalTheme:hover {
   background: linear-gradient(-45deg, #ffe81f, #f8e53b);
   color: black !important;
-
   border: 1px solid transparent;
 }
 
