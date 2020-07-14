@@ -2,7 +2,6 @@
   <v-navigation-drawer
     v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
     v-bind="$attrs"
-    app
   >
     <v-list-item class="px-2">
       <v-list-item-avatar>

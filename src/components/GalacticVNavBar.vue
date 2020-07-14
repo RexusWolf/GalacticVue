@@ -6,6 +6,7 @@
       v-bind:sidebarItems="sidebarItems"
       v-model="sidebarOpen"
       disable-resize-watcher
+      app
     ></galactic-v-sidebar>
 
     <v-app-bar dense>
