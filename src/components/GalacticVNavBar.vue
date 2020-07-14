@@ -34,6 +34,7 @@
       <v-spacer />
       <galactic-v-search-bar></galactic-v-search-bar>
       <galactic-v-button
+        v-if="!this.loggedUser.user_id"
         color="white"
         tile
         depressed
@@ -42,6 +43,7 @@
         to="/signIn"
       >SIGN IN</galactic-v-button>
       <galactic-v-button
+        v-if="!this.loggedUser.user_id"
         color="purple"
         depressed
         tile
@@ -50,33 +52,42 @@
         to="/signUp"
       >SIGN UP</galactic-v-button>
 
-      <v-card v-if="userId" flat class="transparent d-md-flex align-center hidden-md-and-down">
-        <v-list-item class="decoration-none white--text">
-          <router-link to="/profile">
-            <v-avatar size="50" class="nav-bar-avatar"></v-avatar>
-          </router-link>
-          <router-link to="/profile">
-            <v-list-item-title class="headline n2wwhite--text">rexuswolf</v-list-item-title>
-          </router-link>
-          <v-menu class="secondary" bottom left offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn dark icon v-on="on">
-                <v-icon>mdi-chevron-down</v-icon>
-              </v-btn>
-            </template>
-            <v-list class="secondary d-flex flex-column">
-              <v-list-item>
-                <router-link to="/editProfile">
-                  <v-btn class="secondary" text width="100%">Edit Profile</v-btn>
-                </router-link>
-              </v-list-item>
-              <v-list-item>
-                <v-btn class="secondary" text width="100%" @click="logOut">Logout</v-btn>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-list-item>
-      </v-card>
+      <v-menu open-on-hover top offset-y>
+        <template v-slot:activator="{ on, attrs}">
+          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            <v-avatar size="40">
+              <v-img :src="this.loggedUser.profilePicture.value"></v-img>
+            </v-avatar>
+            <v-list-item-title>SDDSs</v-list-item-title>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(item, index) in menuItems" :key="index">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <v-btn tile height="100%" v-if="this.loggedUser.username" class="hidden-md-and-down">
+        <v-avatar size="40" class="ma-3">
+          <v-img :src="this.loggedUser.profilePicture.value"></v-img>
+        </v-avatar>
+        <v-list-item-title class="headline n2wwhite--text">{{this.loggedUser.username.value}}</v-list-item-title>
+        <v-menu bottom left offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn dark icon v-on="on">
+              <v-icon>mdi-chevron-down</v-icon>
+            </v-btn>
+          </template>
+          <v-list class="d-flex flex-column pa-0 mt-1">
+            <router-link to="/editProfile">
+              <v-btn tile>Edit Profile</v-btn>
+            </router-link>
+            <v-btn tile @click="logOut">Logout</v-btn>
+          </v-list>
+        </v-menu>
+      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -141,10 +152,22 @@ export default {
         },
         { title: "Collection", path: "/collection", icon: "mdi-database" }
       ],
-      items: [{ title: "Edit Profile", path: "/editProfile" }]
+      loggedUser: {
+        firstName: { type: String, value: "Francis" },
+        lastName: { type: String, value: "Molina" },
+        username: { type: String, value: "rexuswolf" },
+        email: { type: String, value: "myemail@gmail.com" },
+        password: { type: String, value: "12345678" },
+        user_id: { type: String, value: "12345" },
+        country: { type: String, value: "Spain" },
+        city: { type: String, value: "Cordoba" },
+        profilePicture: {
+          type: String,
+          value: "https://randomuser.me/api/portraits/men/85.jpg"
+        }
+      }
     };
-  },
-  methods: {}
+  }
 };
 </script>
 <style scoped>
