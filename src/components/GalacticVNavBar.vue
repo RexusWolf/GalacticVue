@@ -52,42 +52,43 @@
         to="/signUp"
       >SIGN UP</galactic-v-button>
 
-      <v-menu open-on-hover top offset-y>
-        <template v-slot:activator="{ on, attrs}">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            <v-avatar size="40">
-              <v-img :src="this.loggedUser.profilePicture.value"></v-img>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn tile height="100%" v-on="on" v-if="loggedUser.username" class="hidden-md-and-down">
+            <v-avatar size="40" class="mr-3">
+              <v-img :src="loggedUser.profilePicture.value"></v-img>
             </v-avatar>
-            <v-list-item-title>SDDSs</v-list-item-title>
+            <v-list-item-title>{{loggedUser.username.value}}</v-list-item-title>
+            <v-icon>mdi-chevron-down</v-icon>
           </v-btn>
         </template>
-
-        <v-list>
-          <v-list-item v-for="(item, index) in menuItems" :key="index">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
+        <v-list class="d-flex flex-column pa-0 mt-1">
+          <galactic-v-button
+            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            class="mx-0 my-0"
+            to="/myProfile"
+            tile
+          >View Profile</galactic-v-button>
+          <galactic-v-button
+            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            class="mx-0 my-0"
+            to="/editProfile"
+            tile
+          >Edit Profile</galactic-v-button>
+          <galactic-v-button
+            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            class="mx-0 my-0"
+            to="/settings"
+            tile
+          >Settings</galactic-v-button>
+          <galactic-v-button
+            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            class="mx-0 my-0"
+            tile
+            @click="logOut"
+          >Logout</galactic-v-button>
         </v-list>
       </v-menu>
-
-      <v-btn tile height="100%" v-if="this.loggedUser.username" class="hidden-md-and-down">
-        <v-avatar size="40" class="ma-3">
-          <v-img :src="this.loggedUser.profilePicture.value"></v-img>
-        </v-avatar>
-        <v-list-item-title class="headline n2wwhite--text">{{this.loggedUser.username.value}}</v-list-item-title>
-        <v-menu bottom left offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn dark icon v-on="on">
-              <v-icon>mdi-chevron-down</v-icon>
-            </v-btn>
-          </template>
-          <v-list class="d-flex flex-column pa-0 mt-1">
-            <router-link to="/editProfile">
-              <v-btn tile>Edit Profile</v-btn>
-            </router-link>
-            <v-btn tile @click="logOut">Logout</v-btn>
-          </v-list>
-        </v-menu>
-      </v-btn>
     </v-app-bar>
   </div>
 </template>
