@@ -32,6 +32,10 @@
   color: 1px solid black;
 }
 
+.v-toolbar__content>.v-btn.empireTheme {
+  color: black !important;
+}
+
 .v-btn.empireTheme:hover {
   background: linear-gradient(-45deg, black, rgb(44, 44, 44));
   color: white !important;

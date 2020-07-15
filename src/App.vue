@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <galactic-v-nav-bar sidebar originalTheme></galactic-v-nav-bar>
+    <galactic-v-nav-bar sidebar theme="empireTheme"></galactic-v-nav-bar>
     <v-content class="mx-auto pt-5">
       <v-row>
         <flip-galactic-v-card class="ml-5 mr-5">
@@ -41,10 +41,10 @@
         </flip-galactic-v-card>
       </v-row>
       <v-row class="mx-auto">
-        <galactic-v-button outlined originalTheme>ORIGINAL OUTLINED</galactic-v-button>
-        <galactic-v-button cloneTheme>CLONES NOT OUTLINED</galactic-v-button>
-        <galactic-v-button outlined sithTheme>SITH</galactic-v-button>
-        <galactic-v-button empireTheme>EMPIRE</galactic-v-button>
+        <galactic-v-button outlined theme="originalTheme">ORIGINAL OUTLINED</galactic-v-button>
+        <galactic-v-button theme="cloneTheme">CLONES NOT OUTLINED</galactic-v-button>
+        <galactic-v-button outlined theme="sithTheme">SITH</galactic-v-button>
+        <galactic-v-button theme="empireTheme">EMPIRE</galactic-v-button>
       </v-row>
     </v-content>
   </v-app>

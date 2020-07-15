@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     class="mt-5 mr-3"
-    v-model="movieName"
+    v-bind="$attrs"
     @submit.prevent="submitSearch"
     placeholder="Search..."
     append-icon="mdi-magnify"

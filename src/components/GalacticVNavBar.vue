@@ -2,14 +2,14 @@
   <div>
     <galactic-v-sidebar
       v-if="sidebar"
-      v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+      v-bind:class="theme"
       v-bind:sidebarItems="sidebarItems"
       v-model="sidebarOpen"
       disable-resize-watcher
       app
     ></galactic-v-sidebar>
 
-    <v-app-bar dense>
+    <v-app-bar dense v-bind:class="theme">
       <span class="hidden-md-and-up">
         <v-app-bar-nav-icon @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
@@ -23,6 +23,8 @@
       <galactic-v-button
         tile
         depressed
+        color="transparent"
+        v-bind:class="theme"
         height="100%"
         class="hidden-sm-and-down ml-0 mr-0"
         v-for="item in menuItems"
@@ -33,7 +35,7 @@
         <span class="hidden-md-and-down">{{ item.title}}</span>
       </galactic-v-button>
       <v-spacer />
-      <galactic-v-search-bar></galactic-v-search-bar>
+      <galactic-v-search-bar color="black"></galactic-v-search-bar>
       <galactic-v-button
         v-if="!this.loggedUser.user_id"
         color="white"
@@ -55,7 +57,16 @@
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn tile height="100%" v-on="on" v-if="loggedUser.username" class="hidden-md-and-down">
+          <v-btn
+            color="transparent"
+            tile
+            depressed
+            v-bind:class="theme"
+            height="100%"
+            v-on="on"
+            v-if="loggedUser.username"
+            class="hidden-md-and-down"
+          >
             <v-avatar size="40" class="mr-3">
               <v-img :src="loggedUser.profilePicture.value"></v-img>
             </v-avatar>
@@ -64,30 +75,15 @@
           </v-btn>
         </template>
         <v-list class="d-flex flex-column pa-0 mt-1">
+          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" to="/myProfile" tile>{{theme}}</galactic-v-button>
           <galactic-v-button
-            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-            class="mx-0 my-0"
-            to="/myProfile"
-            tile
-          >View Profile</galactic-v-button>
-          <galactic-v-button
-            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+            v-bind:class="theme"
             class="mx-0 my-0"
             to="/editProfile"
             tile
           >Edit Profile</galactic-v-button>
-          <galactic-v-button
-            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-            class="mx-0 my-0"
-            to="/settings"
-            tile
-          >Settings</galactic-v-button>
-          <galactic-v-button
-            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-            class="mx-0 my-0"
-            tile
-            @click="logOut"
-          >Logout</galactic-v-button>
+          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" to="/settings" tile>Settings</galactic-v-button>
+          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" tile @click="logOut">Logout</galactic-v-button>
         </v-list>
       </v-menu>
     </v-app-bar>
@@ -111,21 +107,12 @@ export default {
       required: true,
       default: "deepskyblue"
     },
-    originalTheme: {
-      type: Boolean,
-      default: false
-    },
-    cloneTheme: {
-      type: Boolean,
-      default: false
-    },
-    sithTheme: {
-      type: Boolean,
-      default: false
-    },
     username: {
       type: String,
       default: "rexuswolf"
+    },
+    theme: {
+      type: String
     }
   },
   data() {

@@ -13,3 +13,7 @@
 .v-navigation-drawer.empireTheme{
   border-right: 1px solid black;
 }
+
+.v-list-item-content.empireTheme{
+  color: black !important;
+}

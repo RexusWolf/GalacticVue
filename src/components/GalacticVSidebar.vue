@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
+    v-bind:class="theme"
     v-bind="$attrs"
     v-bind:value="value"
     v-on:input="$emit('input', $event)"
@@ -21,10 +21,7 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title
-            v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
-            class="starJediFont"
-          >{{ item.title }}</v-list-item-title>
+          <v-list-item-title v-bind:class="$attrs.theme" class="starJediFont">{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -45,17 +42,8 @@ export default {
       required: true,
       default: "deepskyblue"
     },
-    originalTheme: {
-      type: Boolean,
-      default: false
-    },
-    cloneTheme: {
-      type: Boolean,
-      default: false
-    },
-    sithTheme: {
-      type: Boolean,
-      default: false
+    theme: {
+      type: String
     },
     username: {
       type: String,

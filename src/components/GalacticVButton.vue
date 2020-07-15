@@ -1,10 +1,5 @@
 <template>
-  <v-btn
-    v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, empireTheme: empireTheme, sithTheme: sithTheme}"
-    v-bind="$attrs"
-    class="starJediFont ma-1"
-    :style="cssProps"
-  >
+  <v-btn v-bind:class="theme" v-bind="$attrs" class="starJediFont ma-1" :style="cssProps">
     <slot></slot>
   </v-btn>
 </template>
@@ -18,21 +13,8 @@ export default {
       required: true,
       default: "deepskyblue"
     },
-    originalTheme: {
-      type: Boolean,
-      default: false
-    },
-    cloneTheme: {
-      type: Boolean,
-      default: false
-    },
-    empireTheme: {
-      type: Boolean,
-      default: false
-    },
-    sithTheme: {
-      type: Boolean,
-      default: false
+    theme: {
+      type: String
     }
   },
   data: () => ({}),

@@ -16,18 +16,28 @@
 
 .originalTheme{
   color: #ffe81f !important;
+  background-color: #131313 !important;
 }
 
 .cloneTheme{
   color: white;
+  background-color: rgb(0, 39, 99) !important;
 }
 
 .sithTheme{
   color: white;
+  background-color: rgb(41, 13, 13) !important;
 }
 
 .empireTheme{
   color: black !important;
+  background-color: white !important;
+}
+
+
+.empireTheme{
+  color: black !important;
+  background-color: white !important;
 }
 
 @keyframes gradient {
