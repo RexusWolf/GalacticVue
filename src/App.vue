@@ -5,6 +5,17 @@
       <v-row>
         <flip-galactic-v-card class="ml-5 mr-5">
           <template slot="front">
+            <galactic-v-card></galactic-v-card>
+          </template>
+          <template slot="back">
+            <galactic-v-card-back
+              forceColor="deepskyblue"
+              backImageUrl="https://i.pinimg.com/originals/37/85/73/37857333246ddda79c349dd0aa500a01.jpg"
+            ></galactic-v-card-back>
+          </template>
+        </flip-galactic-v-card>
+        <flip-galactic-v-card class="ml-5 mr-5">
+          <template slot="front">
             <galactic-v-card
               cardTitle="Darth Maul"
               cardSubtitle="SITH"
