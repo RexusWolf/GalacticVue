@@ -3,6 +3,7 @@
     <galactic-v-sidebar
       v-if="sidebar"
       v-bind:class="theme"
+      v-bind:theme="theme"
       v-bind:sidebarItems="sidebarItems"
       v-model="sidebarOpen"
       disable-resize-watcher
@@ -27,7 +28,7 @@
         v-bind:class="theme"
         height="100%"
         class="hidden-sm-and-down ml-0 mr-0"
-        v-for="item in menuItems"
+        v-for="item in navBarItems"
         :key="item.title"
         :to="item.path"
       >
@@ -35,7 +36,7 @@
         <span class="hidden-md-and-down">{{ item.title}}</span>
       </galactic-v-button>
       <v-spacer />
-      <galactic-v-search-bar color="black"></galactic-v-search-bar>
+      <galactic-v-search-bar></galactic-v-search-bar>
       <galactic-v-button
         v-if="!this.loggedUser.user_id"
         color="white"
@@ -75,15 +76,14 @@
           </v-btn>
         </template>
         <v-list class="d-flex flex-column pa-0 mt-1">
-          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" to="/myProfile" tile>{{theme}}</galactic-v-button>
           <galactic-v-button
             v-bind:class="theme"
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.path"
             class="mx-0 my-0"
-            to="/editProfile"
             tile
-          >Edit Profile</galactic-v-button>
-          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" to="/settings" tile>Settings</galactic-v-button>
-          <galactic-v-button v-bind:class="theme" class="mx-0 my-0" tile @click="logOut">Logout</galactic-v-button>
+          >{{item.title}}</galactic-v-button>
         </v-list>
       </v-menu>
     </v-app-bar>
@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       sidebarOpen: false,
-      menuItems: [
+      navBarItems: [
         { title: "Movies", path: "/", icon: "mdi-movie" },
         {
           title: "TV Series",
@@ -127,12 +127,15 @@ export default {
         },
         { title: "Collection", path: "/collection", icon: "mdi-database" }
       ],
+      menuItems: [
+        { title: "View Profile", path: "/viewProfile" },
+        { title: "Edit Profile", path: "/editProfile" },
+        { title: "Settings", path: "/settings" },
+        { title: "Log Out", path: "/logOut" }
+      ],
       sidebarItems: [
-        {
-          title: "Calendar",
-          path: "/calendar",
-          icon: "mdi-calendar"
-        },
+        { title: "My Profile", path: "/myProfile", icon: "mdi-account" },
+        { title: "Calendar", path: "/calendar", icon: "mdi-calendar" },
         { title: "Movies", path: "/", icon: "mdi-movie" },
         {
           title: "TV Series",

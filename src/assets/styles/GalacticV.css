@@ -35,11 +35,6 @@
 }
 
 
-.empireTheme{
-  color: black !important;
-  background-color: white !important;
-}
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
