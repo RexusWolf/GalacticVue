@@ -12,8 +12,8 @@
           v-for="item in this.sidebarItems"
           :key="item.title"
           tile
-          depressed
           color="transparent"
+          depressed
           v-bind:class="theme"
           height="50px"
         >

@@ -3,9 +3,8 @@
 }
 
 .v-btn.originalTheme:hover {
-  background: linear-gradient(-45deg, #ffe81f, #f8e53b);
+  background: linear-gradient(-45deg, #ffe81f, #f8e53b) !important;
   color: black !important;
-  border: 1px solid transparent;
 }
 
 .v-btn.cloneTheme {
@@ -13,9 +12,8 @@
 }
 
 .v-btn.cloneTheme:hover {
-  background: linear-gradient(-45deg, rgb(245, 196, 35), rgb(255, 123, 0));
+  background: linear-gradient(-45deg, rgb(245, 196, 35), rgb(255, 123, 0)) !important;
   color: black;
-  border: 1px solid transparent;
 }
 
 .v-btn.sithTheme {
@@ -23,21 +21,36 @@
 }
 
 .v-btn.sithTheme:hover {
-  background: linear-gradient(-45deg, red, rgb(99, 0, 0));
+  background: linear-gradient(-45deg, red, rgb(99, 0, 0)) !important;
   color: black;
-  border: 1px solid transparent;
 }
 
 .v-btn.empireTheme {
   color: 1px solid black;
 }
 
+.v-btn.empireTheme:hover {
+  background: linear-gradient(-45deg, black, rgb(44, 44, 44)) !important;
+  color: white !important;
+}
+
+.v-toolbar__content>.v-btn.originalTheme {
+  background: transparent;
+}
+
+.v-toolbar__content>.v-btn.cloneTheme {
+  background: transparent;
+}
+
+.v-toolbar__content>.v-btn.sithTheme {
+  background: transparent;
+}
+
 .v-toolbar__content>.v-btn.empireTheme {
+  background: transparent;
   color: black !important;
 }
 
-.v-btn.empireTheme:hover {
-  background: linear-gradient(-45deg, black, rgb(44, 44, 44));
-  color: white !important;
-  border: 1px solid white;
+.v-list-item__content>.v-btn{
+  background: transparent !important;
 }
