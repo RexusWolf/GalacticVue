@@ -2,6 +2,8 @@
   <v-navigation-drawer
     v-bind:class="{originalTheme: originalTheme, cloneTheme: cloneTheme, sithTheme: sithTheme}"
     v-bind="$attrs"
+    v-bind:value="value"
+    v-on:input="$emit('input', $event)"
   >
     <v-list-item class="px-2">
       <v-list-item-avatar>
@@ -34,6 +36,10 @@ export default {
   name: "GalacticVSidebar",
   components: {},
   props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
     forceColor: {
       type: String,
       required: true,

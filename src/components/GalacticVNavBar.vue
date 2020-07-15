@@ -11,7 +11,7 @@
 
     <v-app-bar dense>
       <span class="hidden-md-and-up">
-        <v-app-bar-nav-icon @click="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
       <a
         href="https://github.com/RexusWolf/GalacticVue"
