@@ -1,7 +1,8 @@
 <template>
   <v-app>
-    <galactic-v-nav-bar sidebar theme="cloneTheme"></galactic-v-nav-bar>
+    <galactic-v-nav-bar sidebar v-bind:theme="selectedTheme"></galactic-v-nav-bar>
     <v-content class="mx-auto pt-5">
+      <v-select class="mx-4" placeholder="Select theme..." v-model="selectedTheme" :items="themes"></v-select>
       <v-row>
         <flip-galactic-v-card class="ml-5 mr-5">
           <template slot="front">
@@ -70,6 +71,11 @@ import GalacticVNavBar from "./components/GalacticVNavBar";
 
 export default {
   name: "App",
+  props: {
+    selectedTheme: {
+      type: String
+    }
+  },
   components: {
     FlipGalacticVCard,
     GalacticVCard,
@@ -78,7 +84,7 @@ export default {
     GalacticVNavBar
   },
   data: () => ({
-    //
+    themes: ["originalTheme", "cloneTheme", "sithTheme", "empireTheme"]
   })
 };
 </script>
