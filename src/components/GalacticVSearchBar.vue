@@ -1,8 +1,6 @@
 <template>
   <v-text-field
-    light
-    class="pt-5 blue"
-    v-bind:class="theme"
+    class="mt-5"
     v-bind="$attrs"
     @submit.prevent="submitSearch"
     placeholder="Search..."

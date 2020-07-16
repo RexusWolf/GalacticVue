@@ -36,6 +36,7 @@
         <span class="hidden-md-and-down">{{ item.title}}</span>
       </galactic-v-button>
       <v-spacer />
+      <galactic-v-search-bar :light="isDarkTheme"></galactic-v-search-bar>
       <galactic-v-button
         v-if="!this.loggedUser.user_id"
         color="white"
@@ -92,9 +93,10 @@
 <script>
 import GalacticVSidebar from "./GalacticVSidebar";
 import GalacticVButton from "./GalacticVButton";
+import GalacticVSearchBar from "./GalacticVSearchBar";
 export default {
   name: "GalacticVNavBar",
-  components: { GalacticVButton, GalacticVSidebar },
+  components: { GalacticVButton, GalacticVSidebar, GalacticVSearchBar },
   props: {
     sidebar: {
       type: Boolean,
@@ -111,6 +113,14 @@ export default {
     },
     theme: {
       type: String
+    }
+  },
+  computed: {
+    isDarkTheme: function() {
+      if (this.theme == "empireTheme") {
+        return true;
+      }
+      return false;
     }
   },
   data() {

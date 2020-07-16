@@ -74,3 +74,7 @@
 .v-toolbar__content{
   padding: 0px !important;
 }
+
+.v-toolbar__content>.v-text-field{
+  background-color: transparent !important;
+}
