@@ -1,6 +1,6 @@
 <template>
   <v-text-field
-    class="mt-5"
+    class="mt-5 mr-4"
     v-bind="$attrs"
     @submit.prevent="submitSearch"
     placeholder="Search..."
