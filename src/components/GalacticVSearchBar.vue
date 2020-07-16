@@ -1,6 +1,8 @@
 <template>
   <v-text-field
-    class="mt-5 mr-3"
+    light
+    class="pt-5 blue"
+    v-bind:class="theme"
     v-bind="$attrs"
     @submit.prevent="submitSearch"
     placeholder="Search..."
@@ -11,6 +13,11 @@
 
 <script>
 export default {
-  name: "GalacticVSearchBar"
+  name: "GalacticVSearchBar",
+  props: {
+    theme: {
+      type: String
+    }
+  }
 };
 </script>

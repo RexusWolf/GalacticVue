@@ -36,7 +36,6 @@
         <span class="hidden-md-and-down">{{ item.title}}</span>
       </galactic-v-button>
       <v-spacer />
-      <galactic-v-search-bar></galactic-v-search-bar>
       <galactic-v-button
         v-if="!this.loggedUser.user_id"
         color="white"
@@ -92,11 +91,10 @@
 
 <script>
 import GalacticVSidebar from "./GalacticVSidebar";
-import GalacticVSearchBar from "./GalacticVSearchBar";
 import GalacticVButton from "./GalacticVButton";
 export default {
   name: "GalacticVNavBar",
-  components: { GalacticVSearchBar, GalacticVButton, GalacticVSidebar },
+  components: { GalacticVButton, GalacticVSidebar },
   props: {
     sidebar: {
       type: Boolean,
