@@ -51,6 +51,10 @@
   color: black !important;
 }
 
+.v-toolbar__content>.v-btn.empireTheme:hover {
+  color: white !important;
+}
+
 .v-list-item__content>.v-btn{
   background: transparent !important;
 }
