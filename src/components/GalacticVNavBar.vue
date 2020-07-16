@@ -12,7 +12,7 @@
 
     <v-app-bar dense v-bind:class="theme">
       <span class="hidden-md-and-up">
-        <v-app-bar-nav-icon v-bind:class="theme" @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon :light="isDarkTheme" @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
       <a
         href="https://github.com/RexusWolf/GalacticVue"
