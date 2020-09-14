@@ -1,4 +1,3 @@
-
 i.frontFlipBtn,
 i.backFlipBtn {
   position: absolute;
@@ -23,6 +22,8 @@ i.backFlipBtn {
   min-height: 120px;
 }
 .flipper {
+  transform: perspective(1000px);
+  transform-style: preserve-3d;
   -moz-transform: perspective(1000px);
   -moz-transform-style: preserve-3d;
   position: relative;

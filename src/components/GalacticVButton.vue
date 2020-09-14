@@ -1,5 +1,5 @@
 <template>
-  <v-btn v-bind:class="theme" v-bind="$attrs" class="starJediFont ma-1" :style="cssProps">
+  <v-btn v-bind:class="theme" v-bind="$attrs" class="starJediFont" :style="cssProps">
     <slot></slot>
   </v-btn>
 </template>
@@ -11,20 +11,20 @@ export default {
     forceColor: {
       type: String,
       required: true,
-      default: "deepskyblue"
+      default: "deepskyblue",
     },
     theme: {
-      type: String
-    }
+      type: String,
+    },
   },
   data: () => ({}),
   computed: {
     cssProps() {
       return {
-        "--forceColor": this.forceColor
+        "--forceColor": this.forceColor,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

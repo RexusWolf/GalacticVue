@@ -30,11 +30,21 @@
               </flip-galactic-v-card>
             </v-col>
           </v-col>
-          <v-col cols="12" class="d-flex justify-center">
-            <galactic-v-button outlined theme="originalTheme">ORIGINAL OUTLINED</galactic-v-button>
-            <galactic-v-button theme="cloneTheme">CLONES NOT OUTLINED</galactic-v-button>
-            <galactic-v-button outlined theme="sithTheme">SITH</galactic-v-button>
-            <galactic-v-button theme="empireTheme">EMPIRE</galactic-v-button>
+          <v-col cols="8" class="d-flex">
+            <v-col
+              class="d-flex justify-center"
+              cols="12"
+              sm="6"
+              md="3"
+              v-for="(button, index) in buttons"
+              :key="index"
+            >
+              <galactic-v-button
+                :outlined="button.outlined"
+                :theme="button.theme"
+                v-text="button.text"
+              ></galactic-v-button>
+            </v-col>
           </v-col>
         </v-row>
       </v-container>
@@ -96,6 +106,12 @@ export default {
         backImageUrl:
           "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/btg/curiosidades.batanga.com/files/Segun-la-ciencia-la-princesa-Leia-es-mayor-que-Luke-Skywalker-a-pesar-de-ser-su-hermana-melliza-0.jpeg",
       },
+    ],
+    buttons: [
+      { outlined: true, theme: "originalTheme", text: "ORIGINAL OUTLINED" },
+      { outlined: false, theme: "cloneTheme", text: "CLONES" },
+      { outlined: true, theme: "sithTheme", text: "SITH OUTLINED" },
+      { outlined: false, theme: "empireTheme", text: "EMPIRE" },
     ],
   }),
 };

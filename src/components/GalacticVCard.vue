@@ -1,5 +1,5 @@
 <template>
-  <v-card hover class="mx-auto mb-5" max-width="290" :style="cssProps">
+  <v-card hover :style="cssProps">
     <v-img id="cardImg" :src="this.cardImageUrl"></v-img>
     <div class="cardFooter">
       <v-card-title id="cardTitle" class="starJediFont textGlow">{{this.cardTitle}}</v-card-title>
@@ -19,43 +19,43 @@ export default {
     cardImageUrl: {
       type: String,
       required: true,
-      default: "https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg"
+      default: "https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg",
     },
     cardTitle: {
       type: String,
       required: true,
-      default: "Anakin Skywalker"
+      default: "Anakin Skywalker",
     },
     cardSubtitle: {
       type: String,
       required: true,
-      default: "JEDI KNIGHT"
+      default: "JEDI KNIGHT",
     },
     cardText: {
       type: String,
       required: true,
       default:
-        "Anakin Skywalker, a Force-sensitive human male, was a Jedi Knight of the Galactic Republic and the Chosen One of the Force."
+        "Anakin Skywalker, a Force-sensitive human male, was a Jedi Knight of the Galactic Republic and the Chosen One of the Force.",
     },
     forceColor: {
       type: String,
       required: true,
-      default: "deepskyblue"
+      default: "deepskyblue",
     },
     infoUrl: {
       type: String,
       required: true,
-      default: "https://starwars.fandom.com/wiki/Anakin_Skywalker"
-    }
+      default: "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+    },
   },
   data: () => ({}),
   computed: {
     cssProps() {
       return {
-        "--forceColor": this.forceColor
+        "--forceColor": this.forceColor,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
