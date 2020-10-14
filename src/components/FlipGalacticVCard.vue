@@ -15,12 +15,12 @@
 export default {
   name: "FlipGalacticVCard",
   components: {},
-  data: function() {
+  data: function () {
     return {
-      flipped: false
+      flipped: false,
     };
   },
-  props: []
+  props: [],
 };
 </script>
 <style type='text/css' scoped>

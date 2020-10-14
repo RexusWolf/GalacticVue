@@ -1,7 +1,7 @@
 .v-card {
   position: relative;
   height: 400px;
-  width: auto;
+  width: 340px;
   overflow: hidden;
   border-radius: 15px !important;
   -webkit-transition: box-shadow 0.2s linear;
