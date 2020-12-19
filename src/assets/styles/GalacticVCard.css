@@ -1,7 +1,7 @@
 .v-card {
-  position: relative;
   height: 400px;
-  width: auto;
+  width: 300px;
+  text-align: left;
   overflow: hidden;
   border-radius: 15px !important;
   -webkit-transition: box-shadow 0.2s linear;
@@ -36,7 +36,6 @@
 }
 
 .cardText {
-  height: 30%;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -52,7 +51,7 @@
   transition: height 0.3s, opacity 0.3s;
 }
 .v-card:hover > #cardImg {
-  height: 400px;
+  height: 100%;
   opacity: 0.3;
 }
 

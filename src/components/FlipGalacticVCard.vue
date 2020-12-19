@@ -1,10 +1,13 @@
 <template>
-  <div v-bind:class="flipped ? 'flip-container flipped': 'flip-container'">
+  <div
+    class="card"
+    v-bind:class="flipped ? 'flip-container flipped' : 'flip-container'"
+  >
     <div class="flipper">
-      <div class="front" v-on:click="flipped=true">
+      <div class="front" v-on:click="flipped = true">
         <slot name="front"></slot>
       </div>
-      <div class="back" v-on:click="flipped=false">
+      <div class="back" v-on:click="flipped = false">
         <slot name="back"></slot>
       </div>
     </div>
@@ -13,16 +16,16 @@
 
 <script>
 export default {
-  name: "FlipGalacticVCard",
+  name: 'FlipGalacticVCard',
   components: {},
   data: function() {
     return {
-      flipped: false
+      flipped: false,
     };
   },
-  props: []
+  props: [],
 };
 </script>
-<style type='text/css' scoped>
-@import "../assets/styles/FlipGalacticVCard.css";
+<style type="text/css" scoped>
+@import '../assets/styles/FlipGalacticVCard.css';
 </style>
