@@ -36,7 +36,7 @@
                 <template slot="front">
                   <galactic-v-card
                     :name="character.name"
-                    :homeworld="character.homeworld"
+                    :homeworld="character.homeworld.toUpperCase()"
                     :cardImageUrl="character.cardImageUrl"
                     :forceColor="character.forceColor"
                     :infoUrl="character.infoUrl"
@@ -49,6 +49,7 @@
                     :hairColor="character.hair_color"
                     :skinColor="character.skin_color"
                     :eyeColor="character.eye_color"
+                    :homeworld="character.homeworld"
                     :birthYear="character.birth_year"
                     :gender="character.gender"
                     :starship="character.starship"
@@ -146,6 +147,8 @@ export default {
       await this.addHomeworld(character)
       
       await this.addSpecie(character)
+
+      await this.addStarship(character)
     },
 
     async getImage(type, index){
@@ -175,13 +178,23 @@ export default {
       }
     },
 
+    async addStarship(character){
+      const starships = character.starships;
+      delete character.starships;
+      if(starships.length > 0){
+        const starshipUrl = starships[0];
+        const securedStarshipUrl = await starshipUrl.replace('http://','https://');
+        character.starship = await this.getStarship(securedStarshipUrl);
+      }
+    },
+
     async getHomeworld(homeworldRef){
       return axios
         .get(homeworldRef)
         .then((response) => {
           if(response.data.name){
             const homeworld = response.data.name;
-            return homeworld.toUpperCase();
+            return homeworld;
           }
           return 'UNKNOWN';
         })
@@ -203,11 +216,11 @@ export default {
         });
     },
 
-    async getArticle(){
+    async getStarship(starshipRef){
       return axios
-        .get('https://starwars.fandom.com/wiki/Biggs_Darklighter')
+        .get(starshipRef)
         .then((response) => {
-          console.log(response)
+          return response.data.name;
         })
         .catch((error) => {
           console.log(error);

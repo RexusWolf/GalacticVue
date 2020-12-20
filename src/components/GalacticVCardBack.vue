@@ -44,6 +44,7 @@ export default {
     },
     starship: {
       type: String,
+      default: 'n/a',
     },
     forceColor: {
       type: String,
