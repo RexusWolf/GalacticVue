@@ -129,11 +129,11 @@ export default {
       navBarItems: [
         { title: "Characters", path: "/", icon: "mdi-account" },
         {
-          title: "TV Series",
-          path: "/tvSeries",
-          icon: "mdi-television-classic"
+          title: "Planets",
+          path: "/planets",
+          icon: "mdi-earth"
         },
-        { title: "Collection", path: "/collection", icon: "mdi-database" }
+        { title: "Vehicles", path: "/vehicles", icon: "mdi-rocket" }
       ],
       menuItems: [
         { title: "View Profile", path: "/viewProfile" },
@@ -146,11 +146,11 @@ export default {
         { title: "Calendar", path: "/calendar", icon: "mdi-calendar" },
         { title: "Characters", path: "/", icon: "mdi-account" },
         {
-          title: "TV Series",
-          path: "/tvSeries",
-          icon: "mdi-television-classic"
+          title: "Planets",
+          path: "/planets",
+          icon: "mdi-earth"
         },
-        { title: "Collection", path: "/collection", icon: "mdi-database" }
+        { title: "Vehicles", path: "/vehicles", icon: "mdi-rocket" }
       ],
       loggedUser: {
         firstName: { type: String, value: "Francis" },

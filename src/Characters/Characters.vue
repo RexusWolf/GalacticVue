@@ -89,8 +89,9 @@ export default {
       .then(async (response) => {
         this.characters = [];
         const apiCharacters = response.data.results;
-        apiCharacters.map(async (character, index) => {
-          await this.addCharacterInfo(character, index);
+        apiCharacters.map(async (character) => {
+          const id = this.getId(character);
+          await this.addCharacterInfo(character, id);
           this.characters.push(character);
         });
       })
@@ -100,10 +101,10 @@ export default {
       });
     },
 
-    async addCharacterInfo(character, index){
+    async addCharacterInfo(character, id){
       character.forceColor = character.eye_color;
       character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
-      character.cardImageUrl = await this.getImage('people', index);
+      character.cardImageUrl = await this.getImage('people', id);
       
       await this.addHomeworld(character)
       
@@ -112,13 +113,16 @@ export default {
       await this.addStarship(character)
     },
 
-    async getImage(type, index){
-      let imgIndex = 10 * (this.page - 1) + index + 1;
-      if(imgIndex >= 17) imgIndex++;
+    async getImage(type, id){
       const storage = await firebase.storage();
-      const imgPath = type + '/' + imgIndex + '.jpg';
+      const imgPath = type + '/' + id + '.jpg';
       const imgUrl = await storage.ref(imgPath).getDownloadURL();
       return imgUrl;
+    },
+
+    getId(character){
+      const id = character.url.match((/\d+/))[0];
+      return id;
     },
 
     async addSpecie(character){
