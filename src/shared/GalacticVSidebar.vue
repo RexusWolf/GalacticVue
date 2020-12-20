@@ -16,6 +16,7 @@
           depressed
           v-bind:class="theme"
           height="50px"
+          :to="item.path"
         >
           <v-icon left>{{ item.icon }}</v-icon>
           <span>{{ item.title}}</span>

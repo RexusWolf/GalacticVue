@@ -25,7 +25,7 @@
           <v-col>
             <v-pagination
               v-model="page"
-              :length="2"
+              :length="3"
               @input="addPagePlanets()"
             ></v-pagination>
           </v-col>
