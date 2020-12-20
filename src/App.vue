@@ -24,11 +24,8 @@
           </v-col>
           <v-row>
             <v-col
+              class="cardsGrid"
               align="center"
-              cols="12"
-              md="12"
-              lg="6"
-              xl="3"
               v-for="(character, index) in this.characters"
               :key="index"
             >
@@ -230,3 +227,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media (min-width: 1920px) {
+  .cardsGrid{
+    width: 20%;
+  }
+}
+</style>
