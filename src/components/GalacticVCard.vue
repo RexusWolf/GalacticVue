@@ -8,9 +8,6 @@
       <v-card-subtitle class="white--text starJediNewsFont">{{
         this.homeworld
       }}</v-card-subtitle>
-      <v-card-text class="cardText gvgray--text starJediNewsFont">{{
-        this.cardText
-      }}</v-card-text>
       <v-card-actions>
         <v-btn
           :href="this.infoUrl"
@@ -51,7 +48,7 @@ export default {
     },
     forceColor: {
       type: String,
-      required: true,
+      required: false,
       default: 'deepskyblue',
     },
     infoUrl: {

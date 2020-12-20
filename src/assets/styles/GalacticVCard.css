@@ -30,7 +30,7 @@
 }
 
 .cardFooter {
-  height: 55%;
+  height: 20%;
   position: absolute;
   bottom: 0;
 }
@@ -47,7 +47,7 @@
 }
 
 .v-card > #cardImg {
-  height: 45%;
+  height: 80%;
   transition: height 0.3s, opacity 0.3s;
 }
 .v-card:hover > #cardImg {

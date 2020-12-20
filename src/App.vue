@@ -18,7 +18,8 @@
           <v-col>
             <v-pagination
               v-model="page"
-              :length="6"
+              :length="8"
+              @input="getPageCharacters()"
             ></v-pagination>
           </v-col>
           <v-row>
@@ -37,7 +38,6 @@
                     :name="character.name"
                     :homeworld="character.homeworld"
                     :cardImageUrl="character.cardImageUrl"
-                    :cardText="character.cardText"
                     :forceColor="character.forceColor"
                     :infoUrl="character.infoUrl"
                   ></galactic-v-card>
@@ -106,7 +106,7 @@ export default {
     GalacticVNavBar,
   },
   data: () => ({
-    page: 4,
+    page: 1,
     themes: ['originalTheme', 'cloneTheme', 'sithTheme', 'empireTheme'],
     characters: [],
     buttons: [
@@ -175,6 +175,7 @@ export default {
         const characters = response.data.results;
         await this.getArticle();
         await characters.map(async (character, key) => {
+          console.log("HEY");
           let imgIndex = 10 * (this.page - 1) + key + 1;
           if(imgIndex >= 17) imgIndex++;
           character.forceColor = character.eye_color;
