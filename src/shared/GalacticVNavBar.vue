@@ -15,8 +15,7 @@
         <v-app-bar-nav-icon :light="isDarkTheme" @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
       <a
-        href="https://github.com/RexusWolf/GalacticVue"
-        target="_blank"
+        to="/"
         class="hidden-md-and-down pa-4"
       >
         <v-img width="60px" src="https://cdn.iconscout.com/icon/free/png-512/starwars-6-569425.png"></v-img>
