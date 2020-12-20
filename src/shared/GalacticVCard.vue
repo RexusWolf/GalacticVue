@@ -1,5 +1,5 @@
 <template>
-  <v-card hover :style="cssProps">
+  <v-card v-bind="$attrs" hover :style="cssProps">
     <v-img id="cardImg" :src="this.cardImageUrl"></v-img>
     <div class="cardFooter">
       <v-card-title id="name" class="starJediFont textGlow">{{

@@ -8,6 +8,7 @@
               :key="index"
             >
               <galactic-v-card
+                :to="card.path"
                 :name="card.name"
                 :cardImageUrl="card.cardImageUrl"
               ></galactic-v-card>
@@ -39,9 +40,9 @@ export default {
       { outlined: false, theme: 'empireTheme', text: 'EMPIRE' },
     ],
     cards: [
-      {name: 'Characters', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/people%2F5.jpg?alt=media&token=aca02001-e7f5-4c5c-a12a-c24b9957c664'},
-      {name: 'Planets', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/planets%2F13.jpg?alt=media&token=eadb5fea-b734-4d37-a61a-8c39f2b2914a'},
-      {name: 'Vehicles', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/vehicles%2F19.jpg?alt=media&token=add4ad30-3277-4fdc-aa13-709bf912532d'}
+      {name: 'Characters', path: '/characters', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/people%2F5.jpg?alt=media&token=aca02001-e7f5-4c5c-a12a-c24b9957c664'},
+      {name: 'Planets', path: '/planets', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/planets%2F13.jpg?alt=media&token=eadb5fea-b734-4d37-a61a-8c39f2b2914a'},
+      {name: 'Vehicles', path: '/vehicles', cardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/galacticvue.appspot.com/o/vehicles%2F19.jpg?alt=media&token=add4ad30-3277-4fdc-aa13-709bf912532d'}
     ]
   }),
 };
