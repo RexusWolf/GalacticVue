@@ -127,7 +127,7 @@ export default {
     return {
       sidebarOpen: false,
       navBarItems: [
-        { title: "Movies", path: "/", icon: "mdi-movie" },
+        { title: "Characters", path: "/", icon: "mdi-account" },
         {
           title: "TV Series",
           path: "/tvSeries",
@@ -144,7 +144,7 @@ export default {
       sidebarItems: [
         { title: "My Profile", path: "/myProfile", icon: "mdi-account" },
         { title: "Calendar", path: "/calendar", icon: "mdi-calendar" },
-        { title: "Movies", path: "/", icon: "mdi-movie" },
+        { title: "Characters", path: "/", icon: "mdi-account" },
         {
           title: "TV Series",
           path: "/tvSeries",

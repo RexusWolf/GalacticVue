@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import firebase from 'firebase';
+import router from './router';
 Vue.config.productionTip = false
 
 export const firebaseConfig = {
@@ -15,6 +16,7 @@ export const firebaseConfig = {
 
 new Vue({
   vuetify,
+  router,
   render: h => h(App),
   
   created () {
