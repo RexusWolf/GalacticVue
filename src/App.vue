@@ -19,7 +19,7 @@
             <v-pagination
               v-model="page"
               :length="8"
-              @input="getPageCharacters()"
+              @input="addPageCharacters()"
             ></v-pagination>
           </v-col>
           <v-row>
@@ -51,7 +51,7 @@
                     :birthYear="character.birth_year"
                     :gender="character.gender"
                     :starship="character.starship"
-                    :species="character.species[0]"
+                    :species="character.species"
                     :forceColor="character.forceColor"
                     :backImageUrl="character.backImageUrl"
                   ></galactic-v-card-back>
@@ -116,19 +116,67 @@ export default {
       { outlined: false, theme: 'empireTheme', text: 'EMPIRE' },
     ],
   }),
-  mounted() {
-    this.getPageCharacters();
+  async mounted() {
+    await this.addPageCharacters();
   },
   methods: {
-    async getImage(type, id){
+    async addPageCharacters(){
+      axios
+      .get('https://swapi.dev/api/people/?page=' + this.page)
+      .then(async (response) => {
+        this.characters = [];
+        const apiCharacters = response.data.results;
+        apiCharacters.map(async (character, index) => {
+          await this.addCharacterInfo(character, index);
+          this.characters.push(character);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      });
+    },
+
+    async addCharacterInfo(character, index){
+      character.forceColor = character.eye_color;
+      character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
+      character.cardImageUrl = await this.getImage('people', index);
+      
+      await this.addHomeworld(character)
+      
+      await this.addSpecie(character)
+    },
+
+    async getImage(type, index){
+      let imgIndex = 10 * (this.page - 1) + index + 1;
+      if(imgIndex >= 17) imgIndex++;
       const storage = await firebase.storage();
-      const imgPath = type + '/' + id + '.jpg';
+      const imgPath = type + '/' + imgIndex + '.jpg';
       const imgUrl = await storage.ref(imgPath).getDownloadURL();
       return imgUrl;
     },
-    async getPlanet(planetRef){
+
+    async addSpecie(character){
+      const species = character.species;
+      delete character.species;
+      if(species.length > 0){
+        const specieUrl = species[0];
+        const securedSpecieUrl = await specieUrl.replace('http://','https://');
+        character.species = await this.getSpecie(securedSpecieUrl);
+      }
+    },
+
+    async addHomeworld(character){
+      if(character.homeworld){
+        const homeworldRef = character.homeworld;
+        const securedHomeworldUrl = await homeworldRef.replace('http://','https://');
+        character.homeworld = await this.getHomeworld(securedHomeworldUrl);
+      }
+    },
+
+    async getHomeworld(homeworldRef){
       return axios
-        .get(planetRef)
+        .get(homeworldRef)
         .then((response) => {
           if(response.data.name){
             const homeworld = response.data.name;
@@ -141,21 +189,19 @@ export default {
           this.errored = true;
         });
     },
+
     async getSpecie(specieRef){
       return axios
         .get(specieRef)
         .then((response) => {
-          if(response.data.name){
-            const specie = response.data.name;
-            return specie;
-          }
-          return 'UNKNOWN';
+          return response.data.name;
         })
         .catch((error) => {
           console.log(error);
           this.errored = true;
         });
     },
+
     async getArticle(){
       return axios
         .get('https://starwars.fandom.com/wiki/Biggs_Darklighter')
@@ -166,39 +212,6 @@ export default {
           console.log(error);
           this.errored = true;
         });
-    },
-    async getPageCharacters(){
-      axios
-      .get('https://swapi.dev/api/people/?page=' + this.page)
-      .then(async (response) => {
-        this.characters = [];
-        const characters = response.data.results;
-        await this.getArticle();
-        await characters.map(async (character, key) => {
-          let imgIndex = 10 * (this.page - 1) + key + 1;
-          if(imgIndex >= 17) imgIndex++;
-          character.forceColor = character.eye_color;
-          character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
-          character.cardImageUrl = await this.getImage('people', imgIndex);
-          if(character.homeworld){
-            const homeworldRef = character.homeworld;
-            const securedHomeworldUrl = await homeworldRef.replace('http://','https://');
-            character.homeworld = await this.getPlanet(securedHomeworldUrl);
-          }
-          
-          if(character.species[0]){
-            const specieUrl = character.species[0];
-            const securedSpecieUrl = await specieUrl.replace('http://','https://');
-            character.species = await this.getSpecie(securedSpecieUrl);
-          }
-          
-          this.characters.push(character);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      });
     }
   },
 };

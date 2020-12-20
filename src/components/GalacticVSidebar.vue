@@ -48,10 +48,7 @@ export default {
       default: "rexuswolf"
     },
     sidebarItems: {
-      type: Object
-    },
-    class: {
-      type: String
+      type: Array
     }
   },
   data() {

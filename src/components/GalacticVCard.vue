@@ -28,17 +28,14 @@ export default {
     cardImageUrl: {
       type: String,
       required: true,
-      default: 'https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg',
     },
     name: {
       type: String,
       required: true,
-      default: 'Anakin Skywalker',
     },
     homeworld: {
       type: String,
       required: true,
-      default: 'JEDI KNIGHT',
     },
     forceColor: {
       type: String,

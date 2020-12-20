@@ -16,43 +16,34 @@ export default {
   props: {
     species: {
       type: String,
-      default: 'Human',
+      default: 'Human'
     },
     height: {
       type: String,
-      default: '1,77',
     },
     mass: {
       type: String,
-      default: '77',
     },
     hairColor: {
       type: String,
-      default: 'Blonde',
     },
     skinColor: {
       type: String,
-      default: 'Fair',
     },
     eyeColor: {
       type: String,
-      default: 'Blue',
     },
     birthYear: {
       type: String,
-      default: '19BBY',
     },
     gender: {
       type: String,
-      default: 'Male',
     },
     homeworld: {
       type: String,
-      default: 'Tatooine',
     },
     starship: {
       type: String,
-      default: 'X-wing',
     },
     forceColor: {
       type: String,
