@@ -2,11 +2,11 @@
   <v-card hover :style="cssProps">
     <v-img id="cardImg" :src="this.cardImageUrl"></v-img>
     <div class="cardFooter">
-      <v-card-title id="cardTitle" class="starJediFont textGlow">{{
-        this.cardTitle
+      <v-card-title id="name" class="starJediFont textGlow">{{
+        this.name
       }}</v-card-title>
       <v-card-subtitle class="white--text starJediNewsFont">{{
-        this.cardSubtitle
+        this.homeworld
       }}</v-card-subtitle>
       <v-card-text class="cardText gvgray--text starJediNewsFont">{{
         this.cardText
@@ -33,12 +33,12 @@ export default {
       required: true,
       default: 'https://img.ecartelera.com/noticias/fotos/56300/56320/1.jpg',
     },
-    cardTitle: {
+    name: {
       type: String,
       required: true,
       default: 'Anakin Skywalker',
     },
-    cardSubtitle: {
+    homeworld: {
       type: String,
       required: true,
       default: 'JEDI KNIGHT',

@@ -15,7 +15,7 @@
   box-shadow: 0 0 15px var(--forceColor) !important;
 }
 
-.v-card:hover > .cardFooter > #cardTitle {
+.v-card:hover > .cardFooter > #name {
   color: #ffffff;
   text-align: center;
   -webkit-animation: textGlow 1s ease-in-out infinite alternate;

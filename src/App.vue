@@ -15,6 +15,12 @@
               :items="themes"
             ></v-select>
           </v-col>
+          <v-col>
+            <v-pagination
+              v-model="page"
+              :length="6"
+            ></v-pagination>
+          </v-col>
           <v-row>
             <v-col
               align="center"
@@ -22,24 +28,32 @@
               md="12"
               lg="6"
               xl="3"
-              v-for="(card, index) in this.cards"
+              v-for="(character, index) in this.characters"
               :key="index"
             >
               <flip-galactic-v-card>
                 <template slot="front">
                   <galactic-v-card
-                    :cardTitle="card.cardTitle"
-                    :cardSubtitle="card.cardSubtitle"
-                    :cardImageUrl="card.cardImageUrl"
-                    :cardText="card.cardText"
-                    :forceColor="card.forceColor"
-                    :infoUrl="card.infoUrl"
+                    :name="character.name"
+                    :homeworld="character.homeworld"
+                    :cardImageUrl="character.cardImageUrl"
+                    :cardText="character.cardText"
+                    :forceColor="character.forceColor"
+                    :infoUrl="character.infoUrl"
                   ></galactic-v-card>
                 </template>
                 <template slot="back">
                   <galactic-v-card-back
-                    :forceColor="card.forceColor"
-                    :backImageUrl="card.backImageUrl"
+                    :height="character.height"
+                    :mass="character.mass"
+                    :hairColor="character.hair_color"
+                    :skinColor="character.skin_color"
+                    :birthYear="character.birth_year"
+                    :gender="character.gender"
+                    :starship="character.starship"
+                    :species="character.species"
+                    :forceColor="character.forceColor"
+                    :backImageUrl="character.backImageUrl"
                   ></galactic-v-card-back>
                 </template>
               </flip-galactic-v-card>
@@ -73,6 +87,8 @@ import GalacticVCard from './components/GalacticVCard';
 import GalacticVCardBack from './components/GalacticVCardBack';
 import GalacticVButton from './components/GalacticVButton';
 import GalacticVNavBar from './components/GalacticVNavBar';
+import axios from 'axios';
+import firebase from 'firebase';
 
 export default {
   name: 'App',
@@ -90,49 +106,9 @@ export default {
     GalacticVNavBar,
   },
   data: () => ({
+    page: 4,
     themes: ['originalTheme', 'cloneTheme', 'sithTheme', 'empireTheme'],
-    cards: [
-      {
-        cardTitle: 'Darth Maul',
-        cardSubtitle: 'SITH',
-        cardImageUrl:
-          'https://sm.ign.com/t/ign_latam/screenshot/default/darthmaul-1_a2ev.1280.jpg',
-        cardText:
-          'Maul was a Force-sensitive Dathomirian Zabrak male and dark side warrior who served as the apprentice Dark Lord of the Sith Darth Maul during the final years of the Galactic Republic and reigned as a crime lord during the rule of the Galactic Empire. ',
-        forceColor: 'red',
-        infoUrl: 'https://starwars.fandom.com/wiki/Maul',
-        backImageUrl:
-          'https://i.pinimg.com/originals/e7/a0/55/e7a0550a21ffc8933f26526a57254265.jpg',
-      },
-      {
-        forceColor: 'deepskyblue',
-        backImageUrl:
-          'https://i.pinimg.com/originals/37/85/73/37857333246ddda79c349dd0aa500a01.jpg',
-      },
-      {
-        cardTitle: 'Luke Skywalker',
-        cardSubtitle: 'JEDI MASTER',
-        cardImageUrl:
-          'https://dreager1.files.wordpress.com/2010/11/lukeskywalkerwallpaper-777357.jpg',
-        cardText:
-          'Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master who fought in the Galactic Civil War during the reign of the Galactic Empire.',
-        forceColor: 'lawngreen',
-        infoUrl: 'https://starwars.fandom.com/wiki/Luke_Skywalker',
-        backImageUrl:
-          'https://img.vixdata.io/pd/jpg-large/es/sites/default/files/btg/curiosidades.batanga.com/files/Segun-la-ciencia-la-princesa-Leia-es-mayor-que-Luke-Skywalker-a-pesar-de-ser-su-hermana-melliza-0.jpeg',
-      },
-      {
-        cardTitle: 'Leia Skywalker',
-        cardSubtitle: 'JEDI MASTER',
-        cardImageUrl: 'https://pbs.twimg.com/media/ESh6iqRXQAA2ADi.jpg',
-        cardText:
-          'Leia Skywalker, a Force-sensitive human female, was a legendary Jedi Master who fought in the Galactic Civil War during the reign of the Galactic Empire.',
-        forceColor: 'royalblue',
-        infoUrl: 'https://starwars.fandom.com/wiki/Luke_Skywalker',
-        backImageUrl:
-          'https://img.vixdata.io/pd/jpg-large/es/sites/default/files/btg/curiosidades.batanga.com/files/Segun-la-ciencia-la-princesa-Leia-es-mayor-que-Luke-Skywalker-a-pesar-de-ser-su-hermana-melliza-0.jpeg',
-      },
-    ],
+    characters: [],
     buttons: [
       { outlined: true, theme: 'originalTheme', text: 'ORIGINAL OUTLINED' },
       { outlined: false, theme: 'cloneTheme', text: 'CLONES' },
@@ -140,5 +116,81 @@ export default {
       { outlined: false, theme: 'empireTheme', text: 'EMPIRE' },
     ],
   }),
+  mounted() {
+    this.getPageCharacters();
+  },
+  methods: {
+    async getImage(type, id){
+      const storage = await firebase.storage();
+      const imgPath = type + '/' + id + '.jpg';
+      const imgUrl = await storage.ref(imgPath).getDownloadURL();
+      return imgUrl;
+    },
+    async getPlanet(planetRef){
+      return axios
+        .get(planetRef)
+        .then((response) => {
+          if(response.data.name){
+            const homeworld = response.data.name;
+            return homeworld.toUpperCase();
+          }
+          return 'UNKNOWN';
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        });
+    },
+    async getSpecie(specieRef){
+      return axios
+        .get(specieRef)
+        .then((response) => {
+          if(response.data.name){
+            const specie = response.data.name;
+            return specie;
+          }
+          return 'UNKNOWN';
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        });
+    },
+    async getArticle(){
+      return axios
+        .get('https://starwars.fandom.com/wiki/Biggs_Darklighter')
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        });
+    },
+    async getPageCharacters(){
+      axios
+      .get('https://swapi.dev/api/people/?page=' + this.page)
+      .then(async (response) => {
+        this.characters = [];
+        const characters = response.data.results;
+        await this.getArticle();
+        await characters.map(async (character, key) => {
+          let imgIndex = 10 * (this.page - 1) + key + 1;
+          if(imgIndex >= 17) imgIndex++;
+          character.forceColor = character.eye_color;
+          character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
+          character.cardImageUrl = await this.getImage('people', imgIndex);
+          const homeworldRef = character.homeworld;
+          character.homeworld = await this.getPlanet(homeworldRef);
+          character.species = await this.getSpecie(character.species[0]);
+          this.characters.push(character);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      });
+    }
+  },
 };
 </script>
