@@ -51,7 +51,7 @@
                     :birthYear="character.birth_year"
                     :gender="character.gender"
                     :starship="character.starship"
-                    :species="character.species"
+                    :species="character.species[0]"
                     :forceColor="character.forceColor"
                     :backImageUrl="character.backImageUrl"
                   ></galactic-v-card-back>
@@ -175,15 +175,23 @@ export default {
         const characters = response.data.results;
         await this.getArticle();
         await characters.map(async (character, key) => {
-          console.log("HEY");
           let imgIndex = 10 * (this.page - 1) + key + 1;
           if(imgIndex >= 17) imgIndex++;
           character.forceColor = character.eye_color;
           character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
           character.cardImageUrl = await this.getImage('people', imgIndex);
-          const homeworldRef = character.homeworld;
-          character.homeworld = await this.getPlanet(homeworldRef);
-          character.species = await this.getSpecie(character.species[0]);
+          if(character.homeworld){
+            const homeworldRef = character.homeworld;
+            const securedHomeworldUrl = await homeworldRef.replace('http://','https://');
+            character.homeworld = await this.getPlanet(securedHomeworldUrl);
+          }
+          
+          if(character.species[0]){
+            const specieUrl = character.species[0];
+            const securedSpecieUrl = await specieUrl.replace('http://','https://');
+            character.species = await this.getSpecie(securedSpecieUrl);
+          }
+          
           this.characters.push(character);
         });
       })

@@ -40,12 +40,6 @@ export default {
       required: true,
       default: 'JEDI KNIGHT',
     },
-    cardText: {
-      type: String,
-      required: true,
-      default:
-        'Anakin Skywalker, a Force-sensitive human male, was a Jedi Knight of the Galactic Republic and the Chosen One of the Force.',
-    },
     forceColor: {
       type: String,
       required: false,
