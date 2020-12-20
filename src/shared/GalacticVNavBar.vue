@@ -14,12 +14,14 @@
       <span class="hidden-md-and-up">
         <v-app-bar-nav-icon :light="isDarkTheme" @click.stop="sidebarOpen = !sidebarOpen"></v-app-bar-nav-icon>
       </span>
-      <a
-        to="/"
-        class="hidden-md-and-down pa-4"
-      >
-        <v-img width="60px" src="https://cdn.iconscout.com/icon/free/png-512/starwars-6-569425.png"></v-img>
-      </a>
+
+      <router-link to="/" class="hidden-md-and-down pa-4">
+        <v-img
+          alt="sw_logo"
+          width="60px"
+          src="https://cdn.iconscout.com/icon/free/png-512/starwars-6-569425.png"
+        ></v-img>
+      </router-link>
       <galactic-v-button
         tile
         depressed
