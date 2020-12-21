@@ -48,7 +48,7 @@ export default {
     },
     forceColor: {
       type: String,
-      required: true,
+      required: false,
       default: 'deepskyblue',
     },
     backImageUrl: {

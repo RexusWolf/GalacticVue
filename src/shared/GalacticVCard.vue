@@ -27,15 +27,15 @@ export default {
   props: {
     cardImageUrl: {
       type: String,
-      required: true,
+      required: false,
     },
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     homeworld: {
       type: String,
-      required: true,
+      required: false,
     },
     forceColor: {
       type: String,
@@ -44,7 +44,7 @@ export default {
     },
     infoUrl: {
       type: String,
-      required: true,
+      required: false,
       default: 'https://starwars.fandom.com/wiki/Anakin_Skywalker',
     },
   },

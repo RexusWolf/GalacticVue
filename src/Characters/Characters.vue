@@ -37,10 +37,10 @@
               </flip-galactic-v-card>
             </v-col>
           </v-row>
-          <v-col>
+          <v-col cols="12">
             <v-pagination
               v-model="page"
-              :length="8"
+              :length="this.numberOfPages"
               @input="addPageCharacters()"
             ></v-pagination>
           </v-col>
@@ -53,7 +53,7 @@ import FlipGalacticVCard from '../shared/FlipGalacticVCard';
 import GalacticVCard from '../shared/GalacticVCard';
 import GalacticVCardBack from '../shared/GalacticVCardBack';
 import axios from 'axios';
-import firebase from 'firebase';
+import { getId, getImage, getNumberOfPages } from '../shared/methods';
 
 export default {
   name: 'Characters',
@@ -70,6 +70,7 @@ export default {
   },
   data: () => ({
     page: 1,
+    numberOfPages: 0,
     themes: ['originalTheme', 'cloneTheme', 'sithTheme', 'empireTheme'],
     characters: [],
     buttons: [
@@ -80,49 +81,38 @@ export default {
     ],
   }),
   async mounted() {
-    await this.addPageCharacters();
+    this.numberOfPages = await this.addPageCharacters();
   },
   methods: {
     async addPageCharacters(){
-      axios
-      .get('https://swapi.dev/api/people/?page=' + this.page)
-      .then(async (response) => {
-        this.characters = [];
-        const apiCharacters = response.data.results;
-        apiCharacters.map(async (character) => {
-          const id = this.getId(character);
-          await this.addCharacterInfo(character, id);
-          this.characters.push(character);
+      return axios
+        .get('https://swapi.dev/api/people/?page=' + this.page)
+        .then(async (response) => {
+          this.characters = [];
+          const apiCharacters = response.data.results;
+          apiCharacters.map(async (character) => {
+            const id = getId(character);
+            await this.addCharacterInfo(character, id);
+            this.characters.push(character);
+          });
+          return getNumberOfPages(response.data.count);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      });
     },
 
     async addCharacterInfo(character, id){
       character.forceColor = character.eye_color;
       character.infoUrl = 'https://starwars.fandom.com/wiki/' + character.name;
-      character.cardImageUrl = await this.getImage('people', id);
+      character.cardImageUrl = await getImage('people', id);
       
       await this.addHomeworld(character)
       
       await this.addSpecie(character)
 
       await this.addStarship(character)
-    },
-
-    async getImage(type, id){
-      const storage = await firebase.storage();
-      const imgPath = type + '/' + id + '.jpg';
-      const imgUrl = await storage.ref(imgPath).getDownloadURL();
-      return imgUrl;
-    },
-
-    getId(character){
-      const id = character.url.match((/\d+/))[0];
-      return id;
     },
 
     async addSpecie(character){

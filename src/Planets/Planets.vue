@@ -22,10 +22,10 @@
               </flip-galactic-v-card>
             </v-col>
           </v-row>
-          <v-col>
+          <v-col cols="12">
             <v-pagination
               v-model="page"
-              :length="3"
+              :length="this.numberOfPages"
               @input="addPagePlanets()"
             ></v-pagination>
           </v-col>
@@ -38,7 +38,7 @@ import FlipGalacticVCard from '../shared/FlipGalacticVCard';
 import GalacticVCard from '../shared/GalacticVCard';
 import GalacticVCardBack from '../shared/GalacticVCardBack';
 import axios from 'axios';
-import firebase from 'firebase';
+import { getId, getImage, getNumberOfPages } from '../shared/methods';
 
 export default {
   name: 'Planets',
@@ -57,6 +57,7 @@ export default {
     page: 1,
     themes: ['originalTheme', 'cloneTheme', 'sithTheme', 'empireTheme'],
     planets: [],
+    numberOfPages: 0,
     buttons: [
       { outlined: true, theme: 'originalTheme', text: 'ORIGINAL OUTLINED' },
       { outlined: false, theme: 'cloneTheme', text: 'CLONES' },
@@ -65,42 +66,31 @@ export default {
     ],
   }),
   async mounted() {
-    await this.addPagePlanets();
+    this.numberOfPages = await this.addPagePlanets();
   },
   methods: {
     async addPagePlanets(){
-      axios
-      .get('https://swapi.dev/api/planets/?page=' + this.page)
-      .then(async (response) => {
-        this.planets = [];
-        const apiPlanets = response.data.results;
-        apiPlanets.map(async (planet) => {
-          const id = this.getId(planet);
-          await this.addPlanetInfo(planet, id);
-          this.planets.push(planet);
+      return axios
+        .get('https://swapi.dev/api/planets/?page=' + this.page)
+        .then(async (response) => {
+          this.planets = [];
+          const apiPlanets = response.data.results;
+          apiPlanets.map(async (planet) => {
+            const id = getId(planet);
+            await this.addPlanetInfo(planet, id);
+            this.planets.push(planet);
+          });
+          return getNumberOfPages(response.data.count);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      });
     },
 
     async addPlanetInfo(planet, id){
       planet.infoUrl = 'https://starwars.fandom.com/wiki/' + planet.name;
-      planet.cardImageUrl = await this.getImage('planets', id);
-    },
-
-    getId(planet){
-      const id = planet.url.match((/\d+/))[0];
-      return id;
-    },
-
-    async getImage(type, id){
-      const storage = await firebase.storage();
-      const imgPath = type + '/' + id + '.jpg';
-      const imgUrl = await storage.ref(imgPath).getDownloadURL();
-      return imgUrl;
+      planet.cardImageUrl = await getImage('planets', id);
     },
   },
 };

@@ -22,10 +22,10 @@
               </flip-galactic-v-card>
             </v-col>
           </v-row>
-          <v-col>
+          <v-col cols="12">
             <v-pagination
               v-model="page"
-              :length="2"
+              :length="this.numberOfPages"
               @input="addPageVehicles()"
             ></v-pagination>
           </v-col>
@@ -38,7 +38,7 @@ import FlipGalacticVCard from '../shared/FlipGalacticVCard';
 import GalacticVCard from '../shared/GalacticVCard';
 import GalacticVCardBack from '../shared/GalacticVCardBack';
 import axios from 'axios';
-import firebase from 'firebase';
+import { getId, getImage, getNumberOfPages } from '../shared/methods';
 
 export default {
   name: 'Vehicles',
@@ -57,6 +57,7 @@ export default {
     page: 1,
     themes: ['originalTheme', 'cloneTheme', 'sithTheme', 'empireTheme'],
     vehicles: [],
+    numberOfPages: 0,
     buttons: [
       { outlined: true, theme: 'originalTheme', text: 'ORIGINAL OUTLINED' },
       { outlined: false, theme: 'cloneTheme', text: 'CLONES' },
@@ -65,42 +66,31 @@ export default {
     ],
   }),
   async mounted() {
-    await this.addPageVehicles();
+    this.numberOfPages = await this.addPageVehicles();
   },
   methods: {
     async addPageVehicles(){
-      axios
-      .get('https://swapi.dev/api/vehicles/?page=' + this.page)
-      .then(async (response) => {
-        this.vehicles = [];
-        const apiVehicles = response.data.results;
-        apiVehicles.map(async (vehicle) => {
-          const id = this.getId(vehicle);
-          await this.addVehicleInfo(vehicle, id);
-          this.vehicles.push(vehicle);
+      return axios
+        .get('https://swapi.dev/api/vehicles/?page=' + this.page)
+        .then(async (response) => {
+          this.vehicles = [];
+          const apiVehicles = response.data.results;
+          apiVehicles.map(async (vehicle) => {
+            const id = getId(vehicle);
+            await this.addVehicleInfo(vehicle, id);
+            this.vehicles.push(vehicle);
+          });
+          return getNumberOfPages(response.data.count);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      });
     },
 
     async addVehicleInfo(vehicle, id){
       vehicle.infoUrl = 'https://starwars.fandom.com/wiki/' + vehicle.name;
-      vehicle.cardImageUrl = await this.getImage('vehicles', id);
-    },
-
-    async getImage(type, id){
-      const storage = await firebase.storage();
-      const imgPath = type + '/' + id + '.jpg';
-      const imgUrl = await storage.ref(imgPath).getDownloadURL();
-      return imgUrl;
-    },
-
-    getId(vehicle){
-      const id = vehicle.url.match((/\d+/))[0];
-      return id;
+      vehicle.cardImageUrl = await getImage('vehicles', id);
     },
   },
 };
