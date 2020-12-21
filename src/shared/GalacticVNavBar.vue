@@ -128,13 +128,14 @@ export default {
     return {
       sidebarOpen: false,
       navBarItems: [
-        { title: "Characters", path: "/", icon: "mdi-account" },
+        { title: "Characters", path: "/characters", icon: "mdi-account" },
         {
           title: "Planets",
           path: "/planets",
           icon: "mdi-earth"
         },
-        { title: "Vehicles", path: "/vehicles", icon: "mdi-rocket" }
+        { title: "Vehicles", path: "/vehicles", icon: "mdi-car-outline" },
+        { title: "Starships", path: "/starships", icon: "mdi-rocket" }
       ],
       menuItems: [
         { title: "View Profile", path: "/viewProfile" },
@@ -144,14 +145,15 @@ export default {
       ],
       sidebarItems: [
         { title: "My Profile", path: "/myProfile", icon: "mdi-account" },
-        { title: "Calendar", path: "/calendar", icon: "mdi-calendar" },
-        { title: "Characters", path: "/", icon: "mdi-account" },
+        { title: "Home", path: "/", icon: "mdi-home" },
+        { title: "Characters", path: "/characters", icon: "mdi-account" },
         {
           title: "Planets",
           path: "/planets",
           icon: "mdi-earth"
         },
-        { title: "Vehicles", path: "/vehicles", icon: "mdi-rocket" }
+        { title: "Vehicles", path: "/vehicles", icon: "mdi-car-outline" },
+        { title: "Starships", path: "/starships", icon: "mdi-rocket" }
       ],
       loggedUser: {
         firstName: { type: String, value: "Francis" },
