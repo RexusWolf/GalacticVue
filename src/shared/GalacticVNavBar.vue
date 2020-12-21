@@ -135,7 +135,8 @@ export default {
           icon: "mdi-earth"
         },
         { title: "Vehicles", path: "/vehicles", icon: "mdi-car-outline" },
-        { title: "Starships", path: "/starships", icon: "mdi-rocket" }
+        { title: "Starships", path: "/starships", icon: "mdi-rocket" },
+        { title: "Species", path: "/species", icon: "mdi-alien" }
       ],
       menuItems: [
         { title: "View Profile", path: "/viewProfile" },
@@ -153,7 +154,8 @@ export default {
           icon: "mdi-earth"
         },
         { title: "Vehicles", path: "/vehicles", icon: "mdi-car-outline" },
-        { title: "Starships", path: "/starships", icon: "mdi-rocket" }
+        { title: "Starships", path: "/starships", icon: "mdi-rocket" },
+        { title: "Species", path: "/species", icon: "mdi-alien" }
       ],
       loggedUser: {
         firstName: { type: String, value: "Francis" },

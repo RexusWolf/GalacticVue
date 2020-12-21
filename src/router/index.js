@@ -5,6 +5,7 @@ import Characters from '../Characters/Characters.vue';
 import Planets from '../Planets/Planets.vue';
 import Vehicles from '../Vehicles/Vehicles.vue';
 import Starships from '../Starships/Starships.vue';
+import Species from '../Species/Species.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/starships',
     name: 'Starships',
     component: Starships,
+  },
+  {
+    path: '/species',
+    name: 'Species',
+    component: Species,
   },
 ];
 
