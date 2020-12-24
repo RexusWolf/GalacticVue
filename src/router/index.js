@@ -6,6 +6,7 @@ import Planets from '../Planets/Planets.vue';
 import Vehicles from '../Vehicles/Vehicles.vue';
 import Starships from '../Starships/Starships.vue';
 import Species from '../Species/Species.vue';
+import Planet from '../Planets/Planet.vue';
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/species',
     name: 'Species',
     component: Species,
+  },
+  {
+    path: '/planet',
+    name: 'Planet',
+    component: Planet,
   },
 ];
 
